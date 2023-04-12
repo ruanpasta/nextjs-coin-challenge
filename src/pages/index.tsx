@@ -1,9 +1,11 @@
-import { HomeContainer } from "@/styles/home";
+import { Navbar } from '@/components'
+import { HomeContainer, LandingPage } from '@/styles/pages/home'
 
 export default function Home() {
   return (
     <HomeContainer>
-      <span>HOME</span>
+      <Navbar />
+      <LandingPage></LandingPage>
     </HomeContainer>
   )
 }

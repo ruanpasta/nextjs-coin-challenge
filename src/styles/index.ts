@@ -1,5 +1,5 @@
-import { createStitches } from "@stitches/react"
-import { utilsStyles } from "./utils"
+import { createStitches } from '@stitches/react'
+import { utilsStyles } from './utils'
 
 export const {
   styled,
@@ -9,7 +9,7 @@ export const {
   keyframes,
   theme,
   createTheme,
-  config
+  config,
 } = createStitches({
   theme: {
     colors: {
@@ -59,11 +59,5 @@ export const {
     },
 
     ...utilsStyles,
-
-    media: {
-      bp1: '(min-width: 320px)', // Columns: 4, Gutter: 16, width: 56
-      bp2: '(min-width: 768px)', // Columns: 8, Gutter: 32, width: 56
-      bp3: '(min-width: 1448px)', // Columns: 12, Gutter: 32, width: 72
-    },
-  }
+  },
 })

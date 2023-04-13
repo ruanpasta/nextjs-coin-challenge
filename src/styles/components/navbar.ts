@@ -15,14 +15,15 @@ export const NavbarElements = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  maxWidth: 'calc(100vw - ((100vw - 1216px) /2))',
+  maxWidth: 'calc(100vw - ((100vw - 1232px) /2))',
   ...utils.py('1.375rem'),
+  ...utils.px('lg'),
 
   '& > div': {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    gap: utils.sizesToRem['2xl'],
+    gap: utils.sizes['2xl'],
   },
 
   a: {
@@ -52,17 +53,17 @@ export const NavbarElements = styled('div', {
 })
 
 export const PagesMenus = styled('div', {
-  marginLeft: utils.sizesToRem['2xl'],
+  marginLeft: utils.sizes['2xl'],
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  gap: utils.sizesToRem['2xl'],
+  gap: utils.sizes['2xl'],
 })
 
 export const CryptoSlider = styled('div', {
   position: 'relative',
-  marginRight: utils.sizesToRem['5xl'],
-  height: utils.sizesToRem['xl'],
+  marginRight: utils.sizes['5xl'],
+  height: utils.sizes['xl'],
   width: '22rem',
   overflow: 'hidden',
   whiteSpace: 'nowrap'
@@ -79,7 +80,7 @@ export const CryptoContent = styled('div', {
   animation: `${slide} 15s infinite linear`,
 
   '& > span': {
-    marginRight: utils.sizesToRem.md
+    marginRight: utils.sizes.md
   },
 
   '&:hover': {

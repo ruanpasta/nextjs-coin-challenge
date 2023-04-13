@@ -1,4 +1,3 @@
-
 interface Sizes {
   sm: string | number
   md: string | number
@@ -12,29 +11,31 @@ interface Sizes {
 
 type SizeKey = keyof Sizes
 
-const sizes = {
-  sm: 0.75,
-  md: 0.875,
-  lg: 1,
-  xl: 1.25,
-  '2xl': 1.5,
-  '3xl': 2,
-  '4xl': 2.5,
-  '5xl': 3,
+const sizes: Sizes = {
+  sm: '0.75rem',
+  md: '0.875rem',
+  lg: '1rem',
+  xl: '1.25rem',
+  '2xl': '1.5rem',
+  '3xl': '2rem',
+  '4xl': '2.5rem',
+  '5xl': '3rem',
 }
-
-const sizesToRem = Object.entries(sizes).reduce((sizes: any, [key, value]) => {
-  sizes[key] = `${value}rem`
-  return sizes
-}, {}) as Sizes
 
 export const utilsStyles = {
   fontSizes: {
-    ...sizesToRem
+    ...sizes
   },
 
   lineHeights: {
-    ...sizes
+    sm: '0.875rem',
+    md: '1rem',
+    lg: '1.5rem',
+    xl: '1.5rem',
+    '2xl': '2rem',
+    '3xl': '2.5rem',
+    '4xl': '3rem',
+    '5xl': '3.5rem',
   },
 
   letterSpacings: {
@@ -49,41 +50,44 @@ export const utilsStyles = {
   },
 }
 
-const getValue = ({ obj, propName }: { obj: any; propName: SizeKey | string }) =>
-  Object.getOwnPropertyDescriptor(obj, propName)?.value
+const getValue = ({
+  obj,
+  propName,
+}: {
+  obj: any
+  propName: SizeKey | string
+}) => Object.getOwnPropertyDescriptor(obj, propName)?.value
 
 const isSizeKey = (value: any): value is SizeKey => {
-  return typeof value === 'string' && (value in sizes);
+  return typeof value === 'string' && value in sizes
 }
 
-const getSizeToRem = (propName: SizeKey | string) => {
-  if (isSizeKey(propName))
-    return getValue({ obj: sizesToRem, propName })
+const getSize = (propName: SizeKey | string) => {
+  if (isSizeKey(propName)) return getValue({ obj: sizes, propName })
   return propName
 }
 
 export const utils = {
   sizes,
-  sizesToRem,
   fs: (propName: string) => ({
     fontSize: getValue({ obj: utilsStyles.fontSizes, propName }),
     lineHeight: getValue({ obj: utilsStyles.lineHeights, propName }),
     letterSpacing: getValue({ obj: utilsStyles.letterSpacings, propName }),
   }),
   px: (propName: SizeKey | string) => ({
-    paddingLeft: getSizeToRem(propName),
-    paddingRight: getSizeToRem(propName),
+    paddingLeft: getSize(propName),
+    paddingRight: getSize(propName),
   }),
   py: (propName: SizeKey | string) => ({
-    paddingTop: getSizeToRem(propName),
-    paddingBottom: getSizeToRem(propName),
+    paddingTop: getSize(propName),
+    paddingBottom: getSize(propName),
   }),
   mx: (propName: SizeKey | string) => ({
-    marginLeft: getSizeToRem(propName),
-    marginRight: getSizeToRem(propName),
+    marginLeft: getSize(propName),
+    marginRight: getSize(propName),
   }),
   my: (propName: SizeKey | string) => ({
-    marginTop: getSizeToRem(propName),
-    marginBottom: getSizeToRem(propName),
+    marginTop: getSize(propName),
+    marginBottom: getSize(propName),
   }),
 }

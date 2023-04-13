@@ -90,4 +90,8 @@ export const utils = {
     marginTop: getSize(propName),
     marginBottom: getSize(propName),
   }),
+  maxHW: (propName: SizeKey | string) => ({
+    maxHeight: getSize(propName),
+    maxWidth: getSize(propName),
+  })
 }

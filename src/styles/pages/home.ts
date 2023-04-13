@@ -1,5 +1,4 @@
 import { styled } from '..'
-import { utils } from '../utils'
 
 export const HomeContainer = styled('main', {
   display: 'flex',
@@ -18,7 +17,6 @@ export const LandingPage = styled('div', {
 
 export const LandingPageDivider = styled('div', {
   img: {
-    position: 'absolute',
     top: '45rem',
     width: '100%',
     left: 0,

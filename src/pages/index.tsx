@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { HeroBanner, Navbar } from '@/components'
+import { HeroBanner, Navbar, ServicesSection } from '@/components'
 
 import {
   HomeContainer,
@@ -16,11 +16,15 @@ export default function Home() {
       <header>
         <Navbar />
       </header>
+
       <LandingPage>
         <HeroBanner />
+
         <LandingPageDivider>
           <Image src={landingPageDivider} width={1440} height={247} alt='' />
         </LandingPageDivider>
+
+        <ServicesSection />
       </LandingPage>
     </HomeContainer>
   )

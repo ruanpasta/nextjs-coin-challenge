@@ -5,10 +5,9 @@ export const ServicesSectionContainer = styled('section', {
   display: 'flex',
   justifyContent: 'center',
   gap: utils.sizes['2xl'],
-  paddingBottom: utils.sizes['5xl'],
+  paddingBottom: '8rem',
 
   backgroundImage: 'linear-gradient(white, #f7f7f7)',
-  height: '51.125rem',
 })
 
 export const ServicesSectionItems = styled('div', {
@@ -58,9 +57,7 @@ export const SolutionCard = styled('div', {
 
   p: {
     marginTop: utils.sizes.sm,
-    fontSize: '$md',
-    lineHeight: '$2xl',
-    letterSpacing: 0,
+    ...utils.fs('md')
   },
 })
 

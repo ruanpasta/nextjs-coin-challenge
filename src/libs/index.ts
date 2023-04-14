@@ -1,0 +1,2 @@
+export { TabelComponent } from './components'
+

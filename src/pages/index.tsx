@@ -8,10 +8,7 @@ import {
   ServicesSection,
 } from '@/components'
 
-import {
-  HomeContainer,
-  LandingPage,
-} from '@/styles/pages/home'
+import { HomeContainer } from '@/styles/pages/home'
 
 export default function Home() {
   return (
@@ -20,19 +17,17 @@ export default function Home() {
         <Navbar />
       </header>
 
-      <LandingPage>
-        <HeroBanner />
+      <HeroBanner />
 
-        <PageDivider />
+      <PageDivider />
 
-        <ServicesSection />
+      <ServicesSection />
 
-        <CryptosSection />
+      <CryptosSection />
 
-        <EmailSubscribe />
+      <EmailSubscribe />
 
-        <Credits />
-      </LandingPage>
+      <Credits />
     </HomeContainer>
   )
 }

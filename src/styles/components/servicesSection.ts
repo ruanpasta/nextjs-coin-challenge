@@ -2,30 +2,27 @@ import { styled } from '..'
 import { utils } from '../utils'
 
 export const ServicesSectionContainer = styled('section', {
+  width: '100%',
+  backgroundImage: 'linear-gradient(white, #f7f7f7)',
+  display: 'flex',
+  justifyContent: 'center',
+})
+
+export const ServicesSectionContent = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   gap: utils.sizes['2xl'],
   paddingBottom: '8rem',
 
-  backgroundImage: 'linear-gradient(white, #f7f7f7)',
-
-  position: 'relative',
-  zIndex: -2
-})
-
-export const FullBackground = styled('div', {
-  position: 'absolute',
-  width: '100vw',
-  height: '100%',
-  backgroundImage: 'linear-gradient(white, #f7f7f7)',
-  zIndex: -1
+  maxWidth: 'calc(100vw - ((100vw - 1232px) /2))',
+  ...utils.px('lg')
 })
 
 export const ServicesSectionItems = styled('div', {
   marginTop: '5rem'
 })
 
-export const Solutions = styled('div', {
+export const ServicesSectionSolutions = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignContent: 'center',
@@ -36,11 +33,11 @@ export const Solutions = styled('div', {
   marginTop: '2.5rem'
 })
 
-export const SolutionsBelow = styled(Solutions, {
+export const ServicesSectionSolutionsBelow = styled(ServicesSectionSolutions, {
   marginLeft: '5rem',
 })
 
-export const SolutionCard = styled('div', {
+export const ServicesSectionSolutionCard = styled('div', {
   display: 'flex',
   flexDirection: 'column',
 
@@ -72,7 +69,7 @@ export const SolutionCard = styled('div', {
   },
 })
 
-export const SolutionsCTA = styled('div', {
+export const ServicesSectionSolutionsCTA = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   flexDirection: 'column',

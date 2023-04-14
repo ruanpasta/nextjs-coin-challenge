@@ -2,32 +2,31 @@ import { styled } from '..'
 import { utils } from '../utils'
 
 export const EmailSubscribeContainer = styled('section', {
+  width: '100%',
+  backgroundColor: '$primary600',
+  display: 'flex',
+  justifyContent: 'center',
+})
+
+export const EmailSubscribeContent = styled('section', {
+  width: '100%',
   backgroundColor: '$primary600',
   color: '$white',
   display: 'flex',
   justifyContent: 'center',
-  position: 'relative',
-  zIndex: -2,
 })
 
-export const FullBackground = styled('div', {
-  position: 'absolute',
-  width: '100vw',
-  height: '100%',
-  backgroundColor: '$primary600',
-  zIndex: -1
-})
-
-export const Spacer = styled('div', {
+export const EmailSubscribeSpacer = styled('div', {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
   maxWidth: '60rem',
   width: '100%',
   ...utils.py('7.5rem'),
+  ...utils.px('lg')
 })
 
-export const Info = styled('div', {
+export const EmailSubscribeInfo = styled('div', {
   maxWidth: '23.75rem',
 
   span: {
@@ -42,7 +41,7 @@ export const Info = styled('div', {
   },
 })
 
-export const SubscribeForm = styled('div', {
+export const EmailSubscribeSubscribeForm = styled('div', {
   maxWidth: '23.75rem',
   width: '100%',
   display: 'flex',

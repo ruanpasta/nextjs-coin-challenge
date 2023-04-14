@@ -1,5 +1,8 @@
 import { TabelComponent } from '@/libs'
-import { CryptosSectionContainer } from '@/styles/components/cryptosSection'
+import {
+  CryptosSectionContainer,
+  CryptosSectionContent,
+} from '@/styles/components/cryptosSection'
 
 const data = [
   { id: 1, crypto: 'Bitcoin', price: 50000, change: 0.05, trade: 'Buy' },
@@ -22,8 +25,10 @@ const columns = ['id', 'crypto', 'price', 'change', 'trade']
 export default function CryptosSection() {
   return (
     <CryptosSectionContainer>
-      <h3>Top Cryptos</h3>
-      <TabelComponent data={data} columns={columns} rows={5} />
+      <CryptosSectionContent>
+        <h3>Top Cryptos</h3>
+        <TabelComponent data={data} columns={columns} rows={5} />
+      </CryptosSectionContent>
     </CryptosSectionContainer>
   )
 }

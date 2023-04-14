@@ -10,7 +10,3 @@ export const HomeContainer = styled('main', {
   },
 })
 
-export const LandingPage = styled('div', {
-  width: '100%',
-  maxWidth: 'calc(100vw - ((100vw - 1232px) /2))',
-})

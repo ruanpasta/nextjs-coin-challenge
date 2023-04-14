@@ -6,10 +6,11 @@ import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 
 import {
-  CTASessionButtons,
-  CallToAction,
+  HeroBannerCTASessionButtons,
+  HeroBannerCallToAction,
+  HeroBannerContent,
   HeroBannerContainer,
-  Illustrations,
+  HeroBannerIllustrations,
 } from '@/styles/components/heroBanner'
 
 import carouselOne from '../assets/carousel-1.png'
@@ -46,37 +47,39 @@ export default function HeroBanner() {
 
   return (
     <HeroBannerContainer>
-      <CallToAction>
-        <h1>Lorem ipsum dolor sit amet, consectetur</h1>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
-          purus sit amet luctus venenatis, lectus magna fringilla urna,
-          porttitor
-        </p>
-        <button>
-          Sign Up Now
-          <AiOutlineArrowRight />
-        </button>
+      <HeroBannerContent>
+        <HeroBannerCallToAction>
+          <h1>Lorem ipsum dolor sit amet, consectetur</h1>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
+            purus sit amet luctus venenatis, lectus magna fringilla urna,
+            porttitor
+          </p>
+          <button>
+            Sign Up Now
+            <AiOutlineArrowRight />
+          </button>
 
-        <CTASessionButtons>
-          <button>Cryptos</button>
-          <button>NFTs</button>
-          <button>Games</button>
-        </CTASessionButtons>
-      </CallToAction>
+          <HeroBannerCTASessionButtons>
+            <button>Cryptos</button>
+            <button>NFTs</button>
+            <button>Games</button>
+          </HeroBannerCTASessionButtons>
+        </HeroBannerCallToAction>
 
-      <Illustrations ref={sliderContainerRef} className='keen-slider'>
-        {carouselImages.map((image) => (
-          <Image
-            key={image.id}
-            className='keen-slider__slide'
-            src={image.src}
-            width={464}
-            height={499}
-            alt='Carousel Image'
-          />
-        ))}
-      </Illustrations>
+        <HeroBannerIllustrations ref={sliderContainerRef} className='keen-slider'>
+          {carouselImages.map((image) => (
+            <Image
+              key={image.id}
+              className='keen-slider__slide'
+              src={image.src}
+              width={464}
+              height={499}
+              alt='Carousel Image'
+            />
+          ))}
+        </HeroBannerIllustrations>
+      </HeroBannerContent>
     </HeroBannerContainer>
   )
 }

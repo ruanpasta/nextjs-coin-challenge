@@ -1,11 +1,21 @@
-import { styled } from "..";
-import { utils } from "../utils";
+import { styled } from '..'
+import { utils } from '../utils'
 
 export const EmailSubscribeContainer = styled('section', {
   backgroundColor: '$primary600',
   color: '$white',
   display: 'flex',
   justifyContent: 'center',
+  position: 'relative',
+  zIndex: -2,
+})
+
+export const FullBackground = styled('div', {
+  position: 'absolute',
+  width: '100vw',
+  height: '100%',
+  backgroundColor: '$primary600',
+  zIndex: -1
 })
 
 export const Spacer = styled('div', {
@@ -23,13 +33,13 @@ export const Info = styled('div', {
   span: {
     color: '$primary200',
     marginTop: '0.25rem',
-    ...utils.fs('2xl')
+    ...utils.fs('2xl'),
   },
 
   p: {
     marginTop: utils.sizes.lg,
-    ...utils.fs('lg')
-  }
+    ...utils.fs('lg'),
+  },
 })
 
 export const SubscribeForm = styled('div', {
@@ -40,18 +50,18 @@ export const SubscribeForm = styled('div', {
 
   label: {
     paddingBottom: '0.5rem',
-    ...utils.fs('sm')
+    ...utils.fs('sm'),
   },
 
   input: {
     border: 0,
     padding: utils.sizes.lg,
-    paddingRight: utils.sizes["4xl"],
+    paddingRight: utils.sizes['4xl'],
     borderRadius: 8,
 
     '&::placeholder': {
-      color: '$secondary400'
-    }
+      color: '$secondary400',
+    },
   },
 
   button: {
@@ -68,6 +78,5 @@ export const SubscribeForm = styled('div', {
     '&:hover': {
       backgroundColor: '$primary400',
     },
-  }
+  },
 })
-

@@ -1,5 +1,6 @@
 import {
   EmailSubscribeContainer,
+  FullBackground,
   Info,
   Spacer,
   SubscribeForm,
@@ -8,6 +9,8 @@ import {
 export default function EmailSubscribe() {
   return (
     <EmailSubscribeContainer>
+
+      <FullBackground />
       <Spacer>
         <Info>
           <span>Lorem ipsum </span>

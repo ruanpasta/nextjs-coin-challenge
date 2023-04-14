@@ -8,6 +8,17 @@ export const ServicesSectionContainer = styled('section', {
   paddingBottom: '8rem',
 
   backgroundImage: 'linear-gradient(white, #f7f7f7)',
+
+  position: 'relative',
+  zIndex: -2
+})
+
+export const FullBackground = styled('div', {
+  position: 'absolute',
+  width: '100vw',
+  height: '100%',
+  backgroundImage: 'linear-gradient(white, #f7f7f7)',
+  zIndex: -1
 })
 
 export const ServicesSectionItems = styled('div', {

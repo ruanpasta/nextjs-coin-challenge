@@ -1,3 +1,5 @@
+import { styled } from "."
+
 interface Sizes {
   sm: string | number
   md: string | number
@@ -95,3 +97,4 @@ export const utils = {
     maxWidth: getSize(propName),
   })
 }
+

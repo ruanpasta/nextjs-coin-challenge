@@ -4,6 +4,7 @@ import ServicesSection from "./servicesSection"
 import CryptosSection from "./cryptosSection"
 import EmailSubscribe from "./emailSubscribe"
 import Credits from "./credits"
+import PageDivider from "./pageDivider"
 
 export {
   Navbar,
@@ -11,5 +12,6 @@ export {
   ServicesSection,
   CryptosSection,
   EmailSubscribe,
-  Credits
+  Credits,
+  PageDivider
 }

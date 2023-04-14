@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import {
+    FullBackground,
   ServicesSectionContainer,
   ServicesSectionItems,
   SolutionCard,
@@ -14,6 +15,8 @@ import solutionTwo from '../assets/solution-2.png'
 export default function ServicesSection() {
   return (
     <ServicesSectionContainer>
+      <FullBackground />
+
       <ServicesSectionItems>
         <Solutions>
           <SolutionCard>

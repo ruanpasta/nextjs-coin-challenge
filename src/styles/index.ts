@@ -22,7 +22,7 @@ export const {
       primary300: '#FFCD82',
       primary400: '#FFB94F',
       primary500: '#FBAB34', // PrimaryBase
-      primary600: '#18B863',
+      primary600: '#E09422',
       primary700: '#AD721A',
       primary800: '#7A4E0C',
       primary900: '#472C04',

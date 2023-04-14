@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { CryptosSection, HeroBanner, Navbar, ServicesSection } from '@/components'
+import { CryptosSection, EmailSubscribe, HeroBanner, Navbar, ServicesSection } from '@/components'
 
 import {
   HomeContainer,
@@ -27,6 +27,8 @@ export default function Home() {
         <ServicesSection />
 
         <CryptosSection />
+
+        <EmailSubscribe />
       </LandingPage>
     </HomeContainer>
   )

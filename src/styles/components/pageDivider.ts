@@ -16,5 +16,6 @@ export const FullBackground = styled('div', {
 
   img: {
     width: '100%',
+    objectFit: 'cover'
   },
 })

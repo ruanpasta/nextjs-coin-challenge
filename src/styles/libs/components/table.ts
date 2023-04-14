@@ -4,14 +4,16 @@ import { utils } from '@/styles/utils'
 export const TableContainer = styled('div', {
   width: '100%',
   display: 'flex',
-  justifyContent: 'center',
   flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
   gap: utils.sizes.lg,
 
   button: {
     cursor: 'pointer',
     border: 0,
     backgroundColor: 'transparent',
+    width: 'fit-content',
 
     color: '$primary500',
     ...utils.fs('lg'),

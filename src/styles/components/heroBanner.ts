@@ -80,7 +80,5 @@ export const CTASessionButtons = styled('div', {
 export const Illustrations = styled('aside', {
   width: '100%',
   display: 'flex',
-  position: 'relative',
-
-  overflow: 'hidden',
+  overflow: 'hidden'
 })

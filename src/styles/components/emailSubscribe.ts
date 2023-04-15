@@ -8,7 +8,7 @@ export const EmailSubscribeContainer = styled('section', {
   justifyContent: 'center',
 })
 
-export const EmailSubscribeContent = styled('section', {
+export const EmailSubscribeContent = styled('div', {
   width: '100%',
   backgroundColor: '$primary600',
   color: '$white',
@@ -21,9 +21,15 @@ export const EmailSubscribeSpacer = styled('div', {
   justifyContent: 'space-between',
   alignItems: 'center',
   maxWidth: '60rem',
+  gap: utils.sizes['2xl'],
   width: '100%',
   ...utils.py('7.5rem'),
-  ...utils.px('lg')
+  ...utils.px('lg'),
+
+  ...utils.media(['sm', 'md'], {
+    flexDirection: 'column',
+    justifyContent: 'center'
+  })
 })
 
 export const EmailSubscribeInfo = styled('div', {

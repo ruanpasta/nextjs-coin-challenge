@@ -1,20 +1,27 @@
 import { styled } from '..'
 import { utils } from '../utils'
 
-export const HeroBannerContainer = styled('main', {
+export const HeroBannerContainer = styled('section', {
+width: '100%',
+  maxWidth: 'calc(100vw - ((100vw - 1232px) /2))',
 })
 
 export const HeroBannerContent = styled('div', {
-  minHeight: '40rem',
+  minHeight: '38rem',
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  gap: '8.625rem',
-  maxWidth: 'calc(100vw - ((100vw - 1232px) /2))',
-  ...utils.px('lg'),
+
+  ...utils.pFull('lg'),
+
+  ...utils.media(['sm', 'md'], {
+    flexDirection: 'column',
+    justifyContent: 'center',
+    gap: utils.sizes['5xl']
+  })
 })
 
-export const HeroBannerCallToAction = styled('section', {
+export const HeroBannerCallToAction = styled('div', {
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
@@ -82,7 +89,7 @@ export const HeroBannerCTASessionButtons = styled('div', {
 })
 
 export const HeroBannerIllustrations = styled('aside', {
-  width: '100%',
+  maxWidth: '400px',
   display: 'flex',
   overflow: 'hidden'
 })

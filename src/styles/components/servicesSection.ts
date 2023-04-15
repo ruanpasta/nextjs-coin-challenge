@@ -13,9 +13,12 @@ export const ServicesSectionContent = styled('div', {
   justifyContent: 'center',
   gap: utils.sizes['2xl'],
   paddingBottom: '8rem',
+  flexWrap: 'wrap',
+  alignItems: 'center',
 
   maxWidth: 'calc(100vw - ((100vw - 1232px) /2))',
-  ...utils.px('lg')
+  
+  ...utils.px('lg'),
 })
 
 export const ServicesSectionItems = styled('div', {
@@ -35,6 +38,10 @@ export const ServicesSectionSolutions = styled('div', {
 
 export const ServicesSectionSolutionsBelow = styled(ServicesSectionSolutions, {
   marginLeft: '5rem',
+
+  ...utils.media(['sm', 'md'], {
+    marginLeft: 0,
+  })
 })
 
 export const ServicesSectionSolutionCard = styled('div', {

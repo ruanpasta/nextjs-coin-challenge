@@ -1,5 +1,3 @@
-import { styled } from "."
-
 interface Sizes {
   sm: string | number
   md: string | number
@@ -10,8 +8,6 @@ interface Sizes {
   '4xl': string | number
   '5xl': string | number
 }
-
-type SizeKey = keyof Sizes
 
 const sizes: Sizes = {
   sm: '0.75rem',
@@ -24,9 +20,13 @@ const sizes: Sizes = {
   '5xl': '3rem',
 }
 
+type SizeKey = keyof Sizes
+
+type MediaBreakpoint = 'xl' | 'lg' | 'md' | 'sm'
+
 export const utilsStyles = {
   fontSizes: {
-    ...sizes
+    ...sizes,
   },
 
   lineHeights: {
@@ -52,6 +52,13 @@ export const utilsStyles = {
   },
 }
 
+const mediaBreaks = {
+  sm: '(min-width: 0) and (max-width: 320px)',
+  md: '(min-width: 321px) and (max-width: 768px)',
+  lg: '(min-width: 769px) and (max-width: 920px)',
+  xl: '(min-width: 921px)',
+}
+
 const getValue = ({
   obj,
   propName,
@@ -69,6 +76,22 @@ const getSize = (propName: SizeKey | string) => {
   return propName
 }
 
+const createMediaList = (
+  breakpoint: MediaBreakpoint[] | MediaBreakpoint,
+  props: { [key: string]: string | number }
+) => {
+  if (typeof breakpoint !== 'object')
+    return {
+      [`@media ${mediaBreaks[breakpoint]}`]: { ...props },
+    }
+
+  return breakpoint
+    .map((media) => ({
+      [`@media ${mediaBreaks[media]}`]: { ...props },
+    }))
+    .reduce((prev, next) => ({ ...prev, ...next }))
+}
+
 export const utils = {
   sizes,
   fs: (propName: string) => ({
@@ -84,6 +107,12 @@ export const utils = {
     paddingTop: getSize(propName),
     paddingBottom: getSize(propName),
   }),
+  pFull: (propName: SizeKey | string) => ({
+    paddingLeft: getSize(propName),
+    paddingRight: getSize(propName),
+    paddingTop: getSize(propName),
+    paddingBottom: getSize(propName),
+  }),
   mx: (propName: SizeKey | string) => ({
     marginLeft: getSize(propName),
     marginRight: getSize(propName),
@@ -92,9 +121,14 @@ export const utils = {
     marginTop: getSize(propName),
     marginBottom: getSize(propName),
   }),
-  maxHW: (propName: SizeKey | string) => ({
-    maxHeight: getSize(propName),
-    maxWidth: getSize(propName),
-  })
+  mFull: (propName: SizeKey | string) => ({
+    marginLeft: getSize(propName),
+    marginRight: getSize(propName),
+    marginTop: getSize(propName),
+    marginBottom: getSize(propName),
+  }),
+  media: (
+    breakpoints: MediaBreakpoint[] | MediaBreakpoint,
+    props: { [key: string]: string | number }
+  ) => createMediaList(breakpoints, props),
 }
-

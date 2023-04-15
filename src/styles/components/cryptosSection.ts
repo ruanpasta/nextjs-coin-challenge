@@ -8,7 +8,7 @@ export const CryptosSectionContainer = styled('section', {
   alignItems: 'center',
 })
 
-export const CryptosSectionContent = styled('section', {
+export const CryptosSectionContent = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',

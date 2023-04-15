@@ -24,6 +24,7 @@ export const NavbarElements = styled('div', {
     justifyContent: 'space-between',
     alignItems: 'center',
     gap: utils.sizes['2xl'],
+    flexWrap: 'wrap',
   },
 
   a: {
@@ -64,9 +65,18 @@ export const CryptoSlider = styled('div', {
   position: 'relative',
   marginRight: utils.sizes['5xl'],
   height: utils.sizes['xl'],
-  width: '22rem',
+  width: '20rem',
   overflow: 'hidden',
-  whiteSpace: 'nowrap'
+  whiteSpace: 'nowrap',
+    display: 'block',
+
+  ...utils.media(['sm', 'md', 'lg'], {
+    display: 'none'
+  }),
+
+  ...utils.media('xl', {
+    display: 'block'
+  }),
 })
 
 const slide = keyframes({

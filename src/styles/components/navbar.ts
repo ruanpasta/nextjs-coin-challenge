@@ -5,10 +5,13 @@ import { utils } from '../utils'
 export const NavbarContainer = styled('nav', {
   width: '100%',
   display: 'flex',
-  flexDirection: 'column',
   justifyContent: 'center',
 
   boxShadow: '0 8px 8px -2px rgba(0, 0, 0, 0.1)',
+
+  ...utils.media(['sm', 'md', 'lg'], {
+    flexDirection: 'column',
+  })
 })
 
 export const NavbarElements = styled('div', {

@@ -2,7 +2,7 @@ import { styled } from '..'
 import { utils } from '../utils'
 
 export const HeroBannerContainer = styled('section', {
-width: '100%',
+  width: '100%',
   maxWidth: 'calc(100vw - ((100vw - 1232px) /2))',
 })
 
@@ -14,11 +14,19 @@ export const HeroBannerContent = styled('div', {
 
   ...utils.pFull('lg'),
 
-  ...utils.media(['sm', 'md'], {
+  [utils.mediaBreaks.md]: {
     flexDirection: 'column',
     justifyContent: 'center',
-    gap: utils.sizes['5xl']
-  })
+    gap: utils.sizes['5xl'],
+  },
+
+  [utils.mediaBreaks.sm]: {
+    minHeight: '20rem',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+    textAlign: 'center',
+  },
 })
 
 export const HeroBannerCallToAction = styled('div', {
@@ -63,12 +71,38 @@ export const HeroBannerCallToAction = styled('div', {
       backgroundColor: '$primary400',
     },
   },
+  
+  [utils.mediaBreaks.sm]: {
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    h1: {
+      marginTop: utils.sizes['3xl'],
+      ...utils.fs('xl'),
+      lineHeight: '32px'
+    },
+
+    p: {
+      ...utils.fs('md'),
+      lineHeight: '24px'
+    },
+
+    '& > button': {
+      fontWeight: 'normal',
+      marginTop: utils.sizes['2xl'],
+      gap: '0.25rem',
+      ...utils.fs('md'),
+      ...utils.py('0.5rem'),
+      ...utils.px('2.25rem'),
+    }
+  }
 })
 
 export const HeroBannerCTASessionButtons = styled('div', {
   display: 'flex',
   alignItems: 'center',
   gap: utils.sizes['2xl'],
+  marginTop: '5rem',
 
   '& > button': {
     cursor: 'pointer',
@@ -77,7 +111,6 @@ export const HeroBannerCTASessionButtons = styled('div', {
     backgroundColor: '$primary100',
     color: '$primary500',
 
-    marginTop: '5rem',
     ...utils.py('0.5rem'),
     ...utils.px('lg'),
     ...utils.fs('xl'),
@@ -86,10 +119,24 @@ export const HeroBannerCTASessionButtons = styled('div', {
       backgroundColor: '$primary200',
     },
   },
+
+  [utils.mediaBreaks.sm]: {
+    marginTop: utils.sizes['2xl'],
+    gap: utils.sizes.lg,
+
+    '& > button': {
+      ...utils.fs('sm'),
+      ...utils.py('0.25rem'),
+    }
+  }
 })
 
 export const HeroBannerIllustrations = styled('aside', {
   maxWidth: '400px',
   display: 'flex',
-  overflow: 'hidden'
+  overflow: 'hidden',
+
+  [utils.mediaBreaks.sm]: {
+    display: 'none !important',
+  },
 })

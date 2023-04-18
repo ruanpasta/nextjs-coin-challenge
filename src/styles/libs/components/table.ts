@@ -8,6 +8,7 @@ export const TableContainer = styled('div', {
   justifyContent: 'center',
   alignItems: 'center',
   gap: utils.sizes.lg,
+  textTransform: 'capitalize',
 
   button: {
     cursor: 'pointer',
@@ -37,6 +38,11 @@ export const Table = styled('table', {
   td: {
     padding: utils.sizes.sm,
   },
+
+  [utils.mediaBreaks.sm]: {
+    ...utils.fs('sm'),
+    lineHeight: utils.sizes.md,
+  },
 })
 
 export const TableHead = styled('thead', {})
@@ -48,6 +54,11 @@ export const TableHeadRow = styled('tr', {
     color: '$secondary500',
     ...utils.fs('md'),
     fontWeight: 'normal',
+
+    '&.table-head-row--mobile-last-item': {
+      textAlign: 'right',
+      
+    }
   },
 })
 
@@ -67,6 +78,36 @@ export const TableBodyRow = styled('tr', {
       backgroundColor: '$primary100',
     },
   },
+
+  '& > .table-body-row--arrow': {
+    color: '$primary500',
+    textAlign: 'right',
+    ...utils.fs('lg')
+  }
+})
+
+export const TableBodyRowExpandedColumn = styled('td', {
+  borderTop: '1px solid $secondary100',
+  borderBottom: '1px solid $secondary100',
+
+  '& > div': {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingBottom: '0.5rem',
+  },
+
+  '&:hover': {
+    backgroundColor: '$primary100',
+  },
+})
+
+export const TableBodyRowExpandedColumnKey = styled('span', {
+  color: '$secondary500',
+})
+
+export const TableBodyRowExpandedColumnValue = styled('span', {
+  ...utils.fs('md'),
 })
 
 export const TableData = styled('td', {})

@@ -1,4 +1,5 @@
 import { styled } from '..'
+import { utils } from '../utils'
 
 export const PageDividerContainer = styled('section', {
   display: 'flex',
@@ -6,6 +7,10 @@ export const PageDividerContainer = styled('section', {
   height: '15.375rem',
   position: 'relative',
   zIndex: -2,
+
+  [utils.mediaBreaks.sm]: {
+    marginTop: '-4rem'
+  }
 })
 
 export const FullBackground = styled('div', {

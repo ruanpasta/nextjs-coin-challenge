@@ -28,7 +28,8 @@ export const EmailSubscribeSpacer = styled('div', {
 
   ...utils.media(['sm', 'md'], {
     flexDirection: 'column',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    ...utils.py('5xl')
   })
 })
 

@@ -1,5 +1,5 @@
-import TabelComponent from './tabel'
+import TableComponent from './table'
 
 export {
-  TabelComponent,
+  TableComponent,
 }

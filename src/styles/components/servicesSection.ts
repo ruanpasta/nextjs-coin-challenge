@@ -17,23 +17,36 @@ export const ServicesSectionContent = styled('div', {
   alignItems: 'center',
 
   maxWidth: 'calc(100vw - ((100vw - 1232px) /2))',
-  
+
   ...utils.px('lg'),
+
+  ...utils.media(['sm', 'md'], {
+    flexDirection: 'column-reverse',
+    paddingBottom: '4rem',
+  }),
 })
 
 export const ServicesSectionItems = styled('div', {
-  marginTop: '5rem'
+  marginTop: '5rem',
+
+  ...utils.media(['sm', 'md'], {
+    marginTop: 0,
+    maxWidth: '272px',
+  }),
 })
 
 export const ServicesSectionSolutions = styled('div', {
   display: 'flex',
   justifyContent: 'center',
   alignContent: 'center',
-  flexWrap: 'wrap',
   gap: utils.sizes['4xl'],
   maxWidth: '40rem',
   height: 'auto',
-  marginTop: '2.5rem'
+  marginTop: utils.sizes['4xl'],
+
+  [utils.mediaBreaks.sm]: {
+    display: 'none',
+  },
 })
 
 export const ServicesSectionSolutionsBelow = styled(ServicesSectionSolutions, {
@@ -41,7 +54,25 @@ export const ServicesSectionSolutionsBelow = styled(ServicesSectionSolutions, {
 
   ...utils.media(['sm', 'md'], {
     marginLeft: 0,
-  })
+  }),
+})
+
+export const ServicesSectionSolutionsMobile = styled('div', {
+  [utils.mediaBreaks.sm]: {
+    marginTop: 0,
+    display: 'flex',
+    justifyContent: 'start',
+    alignItems: 'center',
+    gap: 0,
+    flexWrap: 'nowrap',
+    overflow: 'hidden',
+    maxWidth: '320px',
+  },
+
+  ...utils.media(['md', 'lg', 'xl'], {
+    // Important nescessario para sobrescrever o keen-slider
+    display: 'none !important',
+  }),
 })
 
 export const ServicesSectionSolutionCard = styled('div', {
@@ -52,13 +83,6 @@ export const ServicesSectionSolutionCard = styled('div', {
   padding: utils.sizes['2xl'],
   backgroundColor: '$white',
   boxShadow: '0px 12px 24px rgba(0, 0, 0, 0.05)',
-  maxHeight: '16.75rem',
-  minWidth: '15.5rem',
-  maxWidth: '15.5rem',
-
-  '& > *': {
-    maxWidth: '11.25rem',
-  },
 
   span: {
     marginTop: utils.sizes['2xl'],
@@ -72,7 +96,13 @@ export const ServicesSectionSolutionCard = styled('div', {
 
   p: {
     marginTop: utils.sizes.sm,
-    ...utils.fs('md')
+    ...utils.fs('md'),
+  },
+
+  [utils.mediaBreaks.sm]: {
+    // Importants nescessarios para sobrescrever o keen-slider
+    minWidth: '250px !important',
+    maxWidth: '250px !important',
   },
 })
 
@@ -107,6 +137,26 @@ export const ServicesSectionSolutionsCTA = styled('div', {
 
     '&:hover': {
       backgroundColor: '$primary400',
+    },
+  },
+
+  [utils.mediaBreaks.sm]: {
+    h4: {
+      ...utils.fs('lg'),
+      marginBottom: '0.25rem',
+    },
+
+    h2: {
+      ...utils.fs('2xl'),
+    },
+
+    p: {
+      fontSize: utils.sizes.md,
+      marginTop: utils.sizes.lg,
+    },
+
+    button: {
+      display: 'none',
     },
   },
 })

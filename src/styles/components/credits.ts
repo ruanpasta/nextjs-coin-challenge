@@ -16,4 +16,12 @@ export const Content = styled('div', {
   maxWidth: 'calc(100vw - ((100vw - 1232px) /2))',
   ...utils.py('2xl'),
   ...utils.px('lg'),
+
+  [utils.mediaBreaks.sm]: {
+    justifyContent: 'center',
+
+    span: {
+      display: 'none',
+    },
+  },
 })

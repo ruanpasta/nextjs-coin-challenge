@@ -53,10 +53,10 @@ export const utilsStyles = {
 }
 
 const mediaBreaks = {
-  sm: '(min-width: 0) and (max-width: 320px)',
-  md: '(min-width: 321px) and (max-width: 768px)',
-  lg: '(min-width: 769px) and (max-width: 920px)',
-  xl: '(min-width: 921px)',
+  sm: `@media (min-width: 0) and (max-width: 320px)`,
+  md: `@media (min-width: 321px) and (max-width: 768px)`,
+  lg: `@media (min-width: 769px) and (max-width: 920px)`,
+  xl: `@media (min-width: 921px)`,
 }
 
 const getValue = ({
@@ -77,23 +77,17 @@ const getSize = (propName: SizeKey | string) => {
 }
 
 const createMediaList = (
-  breakpoint: MediaBreakpoint[] | MediaBreakpoint,
+  breakpoints: MediaBreakpoint[],
   props: { [key: string]: string | number }
-) => {
-  if (typeof breakpoint !== 'object')
-    return {
-      [`@media ${mediaBreaks[breakpoint]}`]: { ...props },
-    }
-
-  return breakpoint
+) => breakpoints
     .map((media) => ({
-      [`@media ${mediaBreaks[media]}`]: { ...props },
+      [mediaBreaks[media]]: { ...props },
     }))
     .reduce((prev, next) => ({ ...prev, ...next }))
-}
 
 export const utils = {
   sizes,
+  mediaBreaks,
   fs: (propName: string) => ({
     fontSize: getValue({ obj: utilsStyles.fontSizes, propName }),
     lineHeight: getValue({ obj: utilsStyles.lineHeights, propName }),
@@ -128,7 +122,8 @@ export const utils = {
     marginBottom: getSize(propName),
   }),
   media: (
-    breakpoints: MediaBreakpoint[] | MediaBreakpoint,
+    breakpoints: MediaBreakpoint[],
     props: { [key: string]: string | number }
   ) => createMediaList(breakpoints, props),
 }
+

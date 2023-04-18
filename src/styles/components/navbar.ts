@@ -5,6 +5,7 @@ import { utils } from '../utils'
 export const NavbarContainer = styled('nav', {
   width: '100%',
   display: 'flex',
+  flexDirection: 'column',
   justifyContent: 'center',
 
   boxShadow: '0 8px 8px -2px rgba(0, 0, 0, 0.1)',
@@ -50,8 +51,10 @@ export const NavbarElements = styled('div', {
     '&:hover': {
       backgroundColor: '$primary400'
     }
-  }
+  },
 })
+
+export const NavbarItem = styled('div', {})
 
 export const PagesMenus = styled('div', {
   marginLeft: utils.sizes['2xl'],
@@ -59,6 +62,10 @@ export const PagesMenus = styled('div', {
   justifyContent: 'space-between',
   alignItems: 'center',
   gap: utils.sizes['2xl'],
+  
+  [utils.mediaBreaks.sm]: {
+    display: 'none'
+  }
 })
 
 export const CryptoSlider = styled('div', {
@@ -68,15 +75,21 @@ export const CryptoSlider = styled('div', {
   width: '20rem',
   overflow: 'hidden',
   whiteSpace: 'nowrap',
-    display: 'block',
 
-  ...utils.media(['sm', 'md', 'lg'], {
+  ...utils.media(['md', 'lg'], {
     display: 'none'
   }),
 
-  ...utils.media('xl', {
+  [utils.mediaBreaks.xl]: {
     display: 'block'
-  }),
+  },
+
+  [utils.mediaBreaks.sm]: {
+    borderTop: '1px solid $secondary100',
+    height: utils.sizes['3xl'],
+    width: '100%',
+    ...utils.py('0.25rem'),
+  }
 })
 
 const slide = keyframes({
@@ -95,5 +108,9 @@ export const CryptoContent = styled('div', {
 
   '&:hover': {
     animationPlayState: 'paused'
+  },
+
+  [utils.mediaBreaks.sm]: {
+    top: '0.5rem'
   }
 })

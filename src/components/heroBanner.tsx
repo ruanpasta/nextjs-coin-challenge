@@ -16,7 +16,7 @@ import {
 import carouselOne from '../assets/carousel-1.png'
 import carouselTwo from '../assets/carousel-2.png'
 import carouselThree from '../assets/carousel-3.png'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect } from 'react'
 
 const carouselImages = [
   { id: 1, src: carouselOne },
@@ -25,7 +25,7 @@ const carouselImages = [
 ]
 
 export default function HeroBanner() {
-  const [sliderContainerRef, sliderInstance] = useKeenSlider<any>({
+  const [sliderContainerRef, sliderInstance] = useKeenSlider({
     loop: false,
     defaultAnimation: {
       duration: 2000,

@@ -8,56 +8,117 @@ import {
   ServicesSectionSolutions,
   ServicesSectionSolutionsBelow,
   ServicesSectionSolutionsCTA,
+  ServicesSectionSolutionsMobile,
 } from '@/styles/components/servicesSection'
 
 import solutionTwo from '../assets/solution-2.png'
+import solutionThree from '../assets/solution-3.png'
+import solutionFour from '../assets/solution-4.png'
+import solutionFive from '../assets/solution-5.png'
+
+import { useKeenSlider } from 'keen-slider/react'
+
+const solutions = [
+  {
+    id: 1,
+    element: (
+      <>
+        <Image src={solutionTwo} width={64} height={64} alt='' />
+        <span>For your company</span>
+        <h4>Crypto Solutions</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,{' '}
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 2,
+    element: (
+      <>
+        <Image src={solutionThree} width={64} height={64} alt='' />
+        <span>For your company</span>
+        <h4>Crypto Solutions</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,{' '}
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 4,
+    element: (
+      <>
+        <Image src={solutionFour} width={64} height={64} alt='' />
+        <span>For your company</span>
+        <h4>Crypto Solutions</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,{' '}
+        </p>
+      </>
+    ),
+  },
+  {
+    id: 5,
+    element: (
+      <>
+        <Image src={solutionFive} width={64} height={64} alt='' />
+        <span>For your company</span>
+        <h4>Crypto Solutions</h4>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,{' '}
+        </p>
+      </>
+    ),
+  },
+]
 
 export default function ServicesSection() {
+  const [sliderContainerRef] = useKeenSlider({
+    slides: {
+      perView: 1,
+      spacing: 16,
+    },
+    loop: false,
+  })
+
   return (
     <ServicesSectionContainer>
       <ServicesSectionContent>
         <ServicesSectionItems>
           <ServicesSectionSolutions>
-            <ServicesSectionSolutionCard>
-              <Image src={solutionTwo} width={64} height={64} alt='' />
-              <span>For your company</span>
-              <h4>Crypto Solutions</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                aliquam,{' '}
-              </p>
-            </ServicesSectionSolutionCard>
-            <ServicesSectionSolutionCard>
-              <Image src={solutionTwo} width={64} height={64} alt='' />
-              <span>For your company</span>
-              <h4>Crypto Solutions</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                aliquam,{' '}
-              </p>
-            </ServicesSectionSolutionCard>
+            {solutions
+              .filter((solutionToFilter) => solutionToFilter.id < 3)
+              .map((solution) => (
+                <ServicesSectionSolutionCard key={solution.id}>
+                  {solution.element}
+                </ServicesSectionSolutionCard>
+              ))}
           </ServicesSectionSolutions>
 
           <ServicesSectionSolutionsBelow>
-            <ServicesSectionSolutionCard>
-              <Image src={solutionTwo} width={64} height={64} alt='' />
-              <span>For your company</span>
-              <h4>Crypto Solutions</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                aliquam,{' '}
-              </p>
-            </ServicesSectionSolutionCard>
-            <ServicesSectionSolutionCard>
-              <Image src={solutionTwo} width={64} height={64} alt='' />
-              <span>For your company</span>
-              <h4>Crypto Solutions</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
-                aliquam,{' '}
-              </p>
-            </ServicesSectionSolutionCard>
+            {solutions
+              .filter((solutionToFilter) => solutionToFilter.id > 2)
+              .map((solution) => (
+                <ServicesSectionSolutionCard key={solution.id}>
+                  {solution.element}
+                </ServicesSectionSolutionCard>
+              ))}
           </ServicesSectionSolutionsBelow>
+
+          <ServicesSectionSolutionsMobile
+            ref={sliderContainerRef}
+            className='keen-slider'
+          >
+            {solutions.map((solution) => (
+              <ServicesSectionSolutionCard
+                key={solution.id}
+                className='keen-slider__slide'
+              >
+                {solution.element}
+              </ServicesSectionSolutionCard>
+            ))}
+          </ServicesSectionSolutionsMobile>
         </ServicesSectionItems>
 
         <ServicesSectionSolutionsCTA>

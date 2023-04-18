@@ -17,6 +17,7 @@ import { AiOutlineMenu } from 'react-icons/ai'
 export default function Navbar() {
   const size = useWindowSize()
   const isMobile = size.width < 321
+  const isDesktop = size.width > 920
 
   return (
     <NavbarContainer>
@@ -30,7 +31,7 @@ export default function Navbar() {
           </PagesMenus>
         </NavbarItem>
         <NavbarItem>
-          {!isMobile && (
+          {isDesktop && (
             <CryptoSlider>
               <CryptoContent>
                 <span>{'BIT R$ 150342,00 +7,082'}</span>
@@ -51,7 +52,7 @@ export default function Navbar() {
           )}
         </NavbarItem>
       </NavbarElements>
-      {isMobile && (
+      {!isDesktop && (
         <CryptoSlider>
           <CryptoContent>
             <span>{'BIT R$ 150342,00 +7,082'}</span>

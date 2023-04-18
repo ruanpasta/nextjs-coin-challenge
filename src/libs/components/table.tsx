@@ -1,4 +1,10 @@
+import * as React from 'react'
+import { useEffect, useState } from 'react'
+
+import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai'
+
 import useWindowSize from '@/hooks/useWindowSize'
+
 import {
   TableContainer,
   Table,
@@ -8,8 +14,6 @@ import {
   TableBodyRowExpandedColumnKey,
   TableBodyRowExpandedColumnValue,
 } from '@/styles/libs/components/table'
-import { useEffect, useState } from 'react'
-import { AiOutlineArrowDown, AiOutlineArrowUp } from 'react-icons/ai'
 
 type Data = { [key: string]: any }
 
@@ -89,13 +93,12 @@ export default function TableComponent({
     })
   }
 
-  function getTableBodyExpandedRow(item = []) {
-    console.log(item)
+  function getTableBodyExpandedRow(item: any = []) {
     return Object.entries(item)
       .filter(([key]) => expandedColumns.includes(key))
       .map(([key, value]: any) => {
         return (
-          <div>
+          <div key={`${item.id}-expanded-${key}-${value}`}>
             <TableBodyRowExpandedColumnKey>{key}</TableBodyRowExpandedColumnKey>
             <TableBodyRowExpandedColumnValue>
               {value}
@@ -106,8 +109,7 @@ export default function TableComponent({
   }
 
   function setClass(index: number): string {
-    console.log(columns.length, index )
-    const canSetClass = columns.length === (index + 1) && isMobile
+    const canSetClass = columns.length === index + 1 && isMobile
     return canSetClass ? 'table-head-row--mobile-last-item' : ''
   }
 
@@ -125,21 +127,20 @@ export default function TableComponent({
         </thead>
         <tbody>
           {data.map((item: any, index: number) => (
-            <>
+            <React.Fragment key={item.id}>
               <TableBodyRow
-                key={item.id}
                 className={index % 2 === 0 ? 'row-even' : 'row-odd'}
               >
                 {getTableBodyRow(item)}
               </TableBodyRow>
               {item.expanded && (
-                <TableBodyRow key={`${item.id}-expanded`}>
+                <TableBodyRow>
                   <TableBodyRowExpandedColumn colSpan={expandedColumns.length}>
                     {getTableBodyExpandedRow(item)}
                   </TableBodyRowExpandedColumn>
                 </TableBodyRow>
               )}
-            </>
+            </React.Fragment>
           ))}
         </tbody>
       </Table>

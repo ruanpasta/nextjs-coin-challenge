@@ -76,31 +76,23 @@ export const CryptoSlider = styled('div', {
   overflow: 'hidden',
   whiteSpace: 'nowrap',
 
-  ...utils.media(['md', 'lg'], {
-    display: 'none'
-  }),
-
-  [utils.mediaBreaks.xl]: {
-    display: 'block'
-  },
-
-  [utils.mediaBreaks.sm]: {
+  ...utils.media(['sm','md', 'lg'], {
     borderTop: '1px solid $secondary100',
     height: utils.sizes['3xl'],
     width: '100%',
     ...utils.py('0.25rem'),
-  }
+  }),
 })
 
-const slide = keyframes({
-  '0%': { transform: 'translateX(40%)' },
+const slide = (startTranslate: number) => keyframes({
+  '0%': { transform: `translateX(${startTranslate}%)` },
   '100%': { transform: 'translateX(-100%)' }
 })
 
 export const CryptoContent = styled('div', {
   position: 'absolute',
   left: 0,
-  animation: `${slide} 15s infinite linear`,
+  animation: `${slide(40)} 15s infinite linear`,
 
   '& > span': {
     marginRight: utils.sizes.md
@@ -112,5 +104,9 @@ export const CryptoContent = styled('div', {
 
   [utils.mediaBreaks.sm]: {
     top: '0.5rem'
-  }
+  },
+
+  ...utils.media(['md', 'lg'], {
+    animation: `${slide(100)} 15s infinite linear`,
+  }),
 })

@@ -14,7 +14,7 @@ export const HeroBannerContent = styled('div', {
 
   ...utils.pFull('lg'),
 
-  [utils.mediaBreaks.md]: {
+  '@media (min-width: 321px) and (max-width: 660px)': {
     flexDirection: 'column',
     justifyContent: 'center',
     gap: utils.sizes['5xl'],

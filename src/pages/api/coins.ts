@@ -1,4 +1,3 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import coins from '../../data/coins.json'
@@ -28,7 +27,7 @@ const getCoins = async () => {
   Simula uma requisicao HTTP para buscar os Icones das coins
   Para pegar os icones foi usado a Requisicao na CoinAPI:
   https://rest.coinapi.io/v1/assets/icons/32
-  
+
   Tambem seria possivel pegar as os icones pegando a `${urlPadrao}/${id_coin}.png`
   porem algumas coins nao retornaram icone,
   e conseguentemente na Requisicao das moedas nao retorna o id_coin,
@@ -39,11 +38,24 @@ const getCoinsIcons = async () => {
   return coinsIcons
 }
 
+/*
+  Simula uma requisicao HTTP para buscar as variacoes das moedas
+  Eh possivel fazer essa requisicao usando a Requisicao na CoinAPI:
+  https://rest.coinapi.io/v1/exchangerate/XRP/USD
+
+  Porem teriam que ser feitas varias requests
+*/
 const getCoinsChange = async () => {
   await timer(250)
   return exchanges
 }
 
+/*
+  Simula requisicoes como um JsonServer.
+  Para a maioria das requisicoes nesta simulacao,
+  o melhor seria usar WebSockets, para ter as informacoes em tempo real com uma performance melhor
+  sem a nescessidade de ficar fazendo varias requisicoes HTTP
+*/
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<CoinsData[]>
@@ -52,19 +64,22 @@ export default async function handler(
   const responseCoinsIcons = await getCoinsIcons()
   const responseCoinsChange = await getCoinsChange()
 
-  const getIcon = (coin: any) => 
+  const getIcon = (coin: any) =>
       responseCoinsIcons.find((coinIcon) =>
         coinIcon.asset_id === coin.asset_id)?.url || ''
 
+  /* 
+    Calculo para pegar a variacao diaria
+    ((Preco atual - preco antigo) / preco antigo) * 100
+  */
   const getCoinChange = (coin: any) => {
-    // Calculo para pegar a variacao diaria
-    // ((Preco atual - preco antigo) / preco antigo) * 100
     const currentPrice = coin.price_usd
     const oldPrice =
       responseCoinsChange.find((coinChange) =>
         coinChange.asset_id_base === coin.asset_id)?.rate || 0
 
-    const change = ( (currentPrice - oldPrice) / oldPrice) * 100
+    const change = ((currentPrice - oldPrice) / oldPrice) * 100
+
     return change
   }
 

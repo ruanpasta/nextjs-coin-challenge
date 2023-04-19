@@ -3,8 +3,13 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import coins from '../../data/coins.json'
 import coinsIcons from '../../data/coinsIcons.json'
 import exchanges from '../../data/exchangesrates.json'
-import { Coin } from '@/core/models/coin'
-import ErrorMesage from '@/core/models/error'
+
+type CoinsData = {
+  crypto: string
+  iconUrl: string
+  price: number
+  change: number // percentage
+}
 
 const timer = (time: number) =>
   new Promise((resolve) => setTimeout(resolve, time))
@@ -54,7 +59,7 @@ const getCoinsChange = async () => {
 */
 export default async function handler(
   _: NextApiRequest,
-  res: NextApiResponse<Coin[]|ErrorMesage>
+  res: NextApiResponse<CoinsData[]>
 ) {
   try {
     const responseCoins = await getCoins()
@@ -82,16 +87,14 @@ export default async function handler(
     }
 
     const data = responseCoins.map((coin) => ({
-      id: coin.asset_id,
       crypto: coin.name,
       iconUrl: getIcon(coin),
       price: coin.price_usd,
       change: getCoinChange(coin),
-      volumeLastMonth: coin.volume_1mth_usd
     }))
 
     return res.status(200).json(data)
   } catch (e) {
-    return res.status(500).json({ error: 'Failed to load data' })
+    return new Error('Failed to get coins')
   }
 }

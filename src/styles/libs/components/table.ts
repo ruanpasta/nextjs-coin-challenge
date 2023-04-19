@@ -10,7 +10,7 @@ export const TableContainer = styled('div', {
   gap: utils.sizes.lg,
   textTransform: 'capitalize',
 
-  button: {
+  '& > button': {
     cursor: 'pointer',
     border: 0,
     backgroundColor: 'transparent',

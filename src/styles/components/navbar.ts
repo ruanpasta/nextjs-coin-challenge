@@ -1,7 +1,6 @@
 import { keyframes, styled } from '..'
 import { utils } from '../utils'
 
-
 export const NavbarContainer = styled('nav', {
   width: '100%',
   display: 'flex',
@@ -11,7 +10,7 @@ export const NavbarContainer = styled('nav', {
 
   ...utils.media(['sm', 'md', 'lg'], {
     flexDirection: 'column',
-  })
+  }),
 })
 
 export const NavbarElements = styled('div', {
@@ -37,8 +36,8 @@ export const NavbarElements = styled('div', {
     ...utils.fs('md'),
 
     '&:hover': {
-      color: '$secondary500'
-    }
+      color: '$secondary500',
+    },
   },
 
   button: {
@@ -52,8 +51,8 @@ export const NavbarElements = styled('div', {
     ...utils.fs('md'),
 
     '&:hover': {
-      backgroundColor: '$primary400'
-    }
+      backgroundColor: '$primary400',
+    },
   },
 })
 
@@ -65,10 +64,10 @@ export const PagesMenus = styled('div', {
   justifyContent: 'space-between',
   alignItems: 'center',
   gap: utils.sizes['2xl'],
-  
+
   [utils.mediaBreaks.sm]: {
-    display: 'none'
-  }
+    display: 'none',
+  },
 })
 
 export const CryptoSlider = styled('div', {
@@ -79,7 +78,7 @@ export const CryptoSlider = styled('div', {
   overflow: 'hidden',
   whiteSpace: 'nowrap',
 
-  ...utils.media(['sm','md', 'lg'], {
+  ...utils.media(['sm', 'md', 'lg'], {
     borderTop: '1px solid $secondary100',
     height: utils.sizes['3xl'],
     width: '100%',
@@ -87,29 +86,46 @@ export const CryptoSlider = styled('div', {
   }),
 })
 
-const slide = (startTranslate: number) => keyframes({
-  '0%': { transform: `translateX(${startTranslate}%)` },
-  '100%': { transform: 'translateX(-100%)' }
-})
+const slide = (startTranslate: number) =>
+  keyframes({
+    '0%': { transform: `translateX(${startTranslate}%)` },
+    '100%': { transform: 'translateX(-100%)' },
+  })
 
 export const CryptoContent = styled('div', {
   position: 'absolute',
+  display: 'flex',
+  gap: '1rem',
   left: 0,
-  animation: `${slide(40)} 15s infinite linear`,
+  animation: `${slide(50)} 20s infinite linear`,
 
   '& > span': {
-    marginRight: utils.sizes.md
+    marginRight: utils.sizes.md,
   },
 
   '&:hover': {
-    animationPlayState: 'paused'
+    animationPlayState: 'paused',
   },
 
   [utils.mediaBreaks.sm]: {
-    top: '0.5rem'
+    top: '0.5rem',
   },
 
   ...utils.media(['md', 'lg'], {
-    animation: `${slide(100)} 15s infinite linear`,
+    animation: `${slide(50)} 20s infinite linear`,
   }),
+})
+
+export const CryptoContentItem = styled('span', {
+  display: 'flex',
+  flexDirection: 'row',
+  gap: '0.5rem',
+
+  '& .crypto-content__change--positive': {
+    color: '$tertiary700',
+  },
+
+  '& .crypto-content__change--negative': {
+    color: '$quartenary700',
+  },
 })

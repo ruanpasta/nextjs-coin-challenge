@@ -50,9 +50,9 @@ export default function TableComponent({
       setData(mobileData)
     } else {
       setData(nextData)
-      setColumns(Object.keys(values[0]))
+      setColumns(Object.keys((values[0]) || {}))
     }
-  }, [isMobile])
+  }, [isMobile, values])
 
   function handleNumberRows() {
     if (isShowingAllRows) setData(values.slice(0, rows))

@@ -1,28 +1,68 @@
+import { useCoinsContext } from '@/core/contexts/coinsContext'
+import { Coin } from '@/core/models/coin'
 import { TableComponent } from '@/libs'
 import {
   CryptosSectionContainer,
   CryptosSectionContent,
+  CryptosSectionContentButton,
+  CryptosSectionContentLabel,
+  CryptosSectionContentNegativeChange,
+  CryptosSectionContentPositiveChange,
 } from '@/styles/components/cryptosSection'
-
-const data = [
-  { id: 1, crypto: 'Bitcoin', price: 50000, change: 0.05, trade: 'Buy' },
-  { id: 2, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 3, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 4, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 5, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 6, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 7, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 8, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 9, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 10, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 11, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 12, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-  { id: 13, crypto: 'Ethereum', price: 2500, change: -0.02, trade: 'Sell' },
-]
+import Image from 'next/image'
 
 const expandedColumns = ['price', 'change']
 
 export default function CryptosSection() {
+  const { coins } = useCoinsContext()
+
+  const getCrypto = (coin: Coin) => {
+    if (coin.iconUrl) {
+      return (
+        <CryptosSectionContentLabel>
+          <Image src={coin.iconUrl} alt='Crypto icon' width={32} height={32} />
+          <span>{coin.crypto}</span>
+        </CryptosSectionContentLabel>
+      )
+    }
+    return coin.crypto
+  }
+
+  const getCoinPrice = (coin: Coin) =>
+    Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(coin.price)
+
+  const getChange = (coin: Coin) => {
+    const info = `${coin.change.toFixed(2)}%`
+    if (coin.change > 0)
+      return (
+        <CryptosSectionContentPositiveChange>
+          {info}
+        </CryptosSectionContentPositiveChange>
+      )
+    return (
+      <CryptosSectionContentNegativeChange>
+        {info}
+      </CryptosSectionContentNegativeChange>
+    )
+  }
+
+  const getTrade = (coin: Coin) => (
+    <CryptosSectionContentButton>Buy</CryptosSectionContentButton>
+  )
+
+  const data = coins
+    .sort((a, b) => b.volumeLastMonth - a.volumeLastMonth)
+    .map((coin, index) => ({
+      id: index + 1,
+      crypto: getCrypto(coin),
+      price: getCoinPrice(coin),
+      change: getChange(coin),
+      trade: getTrade(coin),
+    }))
+
   return (
     <CryptosSectionContainer>
       <CryptosSectionContent>

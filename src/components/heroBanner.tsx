@@ -1,6 +1,6 @@
-import Image from 'next/image'
+import { useEffect } from 'react'
 
-import { AiOutlineArrowRight } from 'react-icons/ai'
+import Image from 'next/image'
 
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
@@ -13,10 +13,11 @@ import {
   HeroBannerIllustrations,
 } from '@/styles/components/heroBanner'
 
+import { AiOutlineArrowRight } from 'react-icons/ai'
+
 import carouselOne from '../assets/carousel-1.png'
 import carouselTwo from '../assets/carousel-2.png'
 import carouselThree from '../assets/carousel-3.png'
-import { useEffect } from 'react'
 
 const carouselImages = [
   { id: 1, src: carouselOne },

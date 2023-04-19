@@ -1,0 +1,62 @@
+[
+  {
+    "time": "2023-04-18T22:30:58.0000000Z",
+    "asset_id_base": "BTC",
+    "asset_id_quote": "USD",
+    "rate": 30332.587868735795863122439999
+  },
+  {
+    "time": "2023-04-18T22:32:06.0000000Z",
+    "asset_id_base": "ETH",
+    "asset_id_quote": "USD",
+    "rate": 2090.2011376855628008597247587
+  },
+  {
+    "time": "2023-04-18T22:32:23.0000000Z",
+    "asset_id_base": "USDT",
+    "asset_id_quote": "USD",
+    "rate": 1.0001739585774272489793721475
+  },
+  {
+    "time": "2023-04-18T22:32:48.0000000Z",
+    "asset_id_base": "BNB",
+    "asset_id_quote": "USD",
+    "rate": 342.11728300953255066441833241
+  },
+  {
+    "time": "2023-04-18T22:33:08.0000000Z",
+    "asset_id_base": "USDC",
+    "asset_id_quote": "USD",
+    "rate": 0.9998686405269097909666318472
+  },
+  {
+    "time": "2023-04-18T22:33:08.0000000Z",
+    "asset_id_base": "XRP",
+    "asset_id_quote": "USD",
+    "rate": 0.5234567895961150520501517195
+  },
+  {
+    "time": "2023-04-18T22:33:08.0000000Z",
+    "asset_id_base": "ADA",
+    "asset_id_quote": "USD",
+    "rate": 0.9798686405269097909666318472
+  },
+  {
+    "time": "2023-04-18T22:33:08.0000000Z",
+    "asset_id_base": "DOGE",
+    "asset_id_quote": "USD",
+    "rate": 0.9998686405269097909666318472
+  },
+  {
+    "time": "2023-04-18T22:33:08.0000000Z",
+    "asset_id_base": "MATIC",
+    "asset_id_quote": "USD",
+    "rate": 1.3000661391507392611638684947
+  },
+  {
+    "time": "2023-04-18T22:33:08.0000000Z",
+    "asset_id_base": "SOL",
+    "asset_id_quote": "USD",
+    "rate": 26.237842237859565442950830855
+  }
+]

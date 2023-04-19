@@ -1,8 +1,16 @@
+import { useContext } from 'react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { CoinsContext } from '@/core/contexts/coinsContext'
+import { Coin, CoinsContextType } from '@/core/models/coin'
+
+import useWindowSize from '@/hooks/useWindowSize'
+
 import {
   CryptoContent,
+  CryptoContentItem,
   CryptoSlider,
   NavbarContainer,
   NavbarElements,
@@ -10,14 +18,41 @@ import {
   PagesMenus,
 } from '@/styles/components/navbar'
 
-import logo from '../assets/logo.png'
-import useWindowSize from '@/hooks/useWindowSize'
 import { AiOutlineMenu } from 'react-icons/ai'
+
+import logo from '../assets/logo.png'
 
 export default function Navbar() {
   const size = useWindowSize()
   const isMobile = size.width < 321
   const isDesktop = size.width > 920
+
+  const { coins } = useContext<CoinsContextType>(CoinsContext)
+
+  const getCoinInfo = (coin: Coin) => {
+    const price = Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(coin.price)
+
+    const change = `${coin.change.toFixed(2)}%`
+
+    return (
+      <CryptoContentItem key={coin.id}>
+        <span>{coin.id}</span>
+        <span>{price}</span>
+        <span
+          className={
+            coin.change > 0
+              ? 'crypto-content__change--positive'
+              : 'crypto-content__change--negative'
+          }
+        >
+          {change}
+        </span>
+      </CryptoContentItem>
+    )
+  }
 
   return (
     <NavbarContainer>
@@ -34,11 +69,7 @@ export default function Navbar() {
           {isDesktop && (
             <CryptoSlider>
               <CryptoContent>
-                <span>{'BIT R$ 150342,00 +7,082'}</span>
-                <span>ETH R$ 9.2030,15 -18,709</span>
-                <span>SOL R$ 11.003,62 +7,082</span>
-                <span>BIN R$ 1.532,16 -3,980</span>
-                <span>DOG R$ 23,62 +1,230</span>
+                {coins.map((coin) => getCoinInfo(coin))}
               </CryptoContent>
             </CryptoSlider>
           )}
@@ -55,11 +86,7 @@ export default function Navbar() {
       {!isDesktop && (
         <CryptoSlider>
           <CryptoContent>
-            <span>{'BIT R$ 150342,00 +7,082'}</span>
-            <span>ETH R$ 9.2030,15 -18,709</span>
-            <span>SOL R$ 11.003,62 +7,082</span>
-            <span>BIN R$ 1.532,16 -3,980</span>
-            <span>DOG R$ 23,62 +1,230</span>
+            {coins.map((coin) => getCoinInfo(coin))}
           </CryptoContent>
         </CryptoSlider>
       )}

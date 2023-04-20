@@ -136,6 +136,11 @@ export const HeroBannerIllustrations = styled('aside', {
   display: 'flex',
   overflow: 'hidden',
 
+  img: {
+    height: 'auto',
+    width: 'auto'
+  },
+
   [utils.mediaBreaks.sm]: {
     display: 'none !important',
   },

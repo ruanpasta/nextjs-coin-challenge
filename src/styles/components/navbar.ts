@@ -116,7 +116,7 @@ export const CryptoContent = styled('div', {
   }),
 })
 
-export const CryptoContentItem = styled('span', {
+export const CryptoContentItem = styled('div', {
   display: 'flex',
   flexDirection: 'row',
   gap: '0.5rem',

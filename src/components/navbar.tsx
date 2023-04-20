@@ -1,10 +1,10 @@
-import { useContext } from 'react'
+import { useEffect, useState } from 'react'
 
 import Image from 'next/image'
 import Link from 'next/link'
 
-import { CoinsContext } from '@/core/contexts/coinsContext'
-import { Coin, CoinsContextType } from '@/core/models/coin'
+import { useCoinsContext } from '@/core/contexts/coinsContext'
+import { Coin } from '@/core/models/coin'
 
 import useWindowSize from '@/hooks/useWindowSize'
 
@@ -24,10 +24,15 @@ import logo from '../assets/logo.png'
 
 export default function Navbar() {
   const size = useWindowSize()
-  const isMobile = size.width < 321
-  const isDesktop = size.width > 920
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+  const [isDesktop, setIsDesktop] = useState<boolean>(true)
 
-  const { coins } = useContext<CoinsContextType>(CoinsContext)
+  useEffect(() => {
+    setIsMobile(size.width < 321)
+    setIsDesktop(size.width > 920)
+  }, [size.width])
+
+  const { coins } = useCoinsContext()
 
   const getCoinInfo = (coin: Coin) => {
     const price = Intl.NumberFormat('en-US', {
@@ -69,7 +74,9 @@ export default function Navbar() {
           {isDesktop && (
             <CryptoSlider>
               <CryptoContent>
-                {coins.map((coin) => getCoinInfo(coin))}
+                {coins
+                  .sort((a, b) => b.volumeLastMonth - a.volumeLastMonth)
+                  .map((coin) => (getCoinInfo(coin)))}
               </CryptoContent>
             </CryptoSlider>
           )}
@@ -77,7 +84,7 @@ export default function Navbar() {
             <AiOutlineMenu />
           ) : (
             <>
-              <a href='/'>Sign in</a>
+              <a href='#'>Sign in</a>
               <button>Sign up</button>
             </>
           )}

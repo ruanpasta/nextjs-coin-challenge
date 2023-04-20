@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { GetStaticProps } from 'next'
 
 import axios from 'axios'
 
@@ -15,17 +15,19 @@ import {
 } from '@/components'
 
 import { HomeContainer } from '@/styles/pages/home'
+
 import { Coin } from '@/core/models/coin'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
   const [coins, setCoins] = useState<Coin[]>([])
 
   async function getCoins() {
     try {
-      const response = await axios.post('api/coins')
-      setCoins(response.data)
-    } catch (e) {
-      throw new Error('Failed to get coins' + e)
+      const coinsResponse = await axios.post('http://localhost:3000/api/coins')
+      setCoins(coinsResponse.data)
+    } catch (error) {
+      throw new Error('Failed to load coins')
     }
   }
 
@@ -54,4 +56,13 @@ export default function Home() {
       </CoinsContext.Provider>
     </HomeContainer>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const twoHours = 60 * 60 * 2
+
+  return {
+    props: {},
+    revalidate: twoHours
+  }
 }

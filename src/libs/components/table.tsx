@@ -52,7 +52,7 @@ export default function TableComponent({
       setData(nextData)
       setColumns(Object.keys((values[0]) || {}))
     }
-  }, [isMobile, values])
+  }, [isMobile, values, expandableColumn, mainRow, rows])
 
   function handleNumberRows() {
     if (isShowingAllRows) setData(values.slice(0, rows))

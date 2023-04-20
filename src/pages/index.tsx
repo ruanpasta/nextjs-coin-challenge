@@ -43,15 +43,10 @@ export default function Home() {
         </header>
 
         <HeroBanner />
-
         <PageDivider />
-
         <ServicesSection />
-
         <CryptosSection />
-
         <EmailSubscribe />
-
         <Credits />
       </CoinsContext.Provider>
     </HomeContainer>

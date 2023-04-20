@@ -21,6 +21,7 @@ import {
 import { AiOutlineMenu } from 'react-icons/ai'
 
 import logo from '../assets/logo.png'
+import Button from '@/libs/components/button'
 
 export default function Navbar() {
   const size = useWindowSize()
@@ -84,8 +85,8 @@ export default function Navbar() {
             <AiOutlineMenu />
           ) : (
             <>
-              <a href='#'>Sign in</a>
-              <button>Sign up</button>
+              <Button color='secondary'>Sign in</Button>
+              <Button variant='contained' size='medium'>Sign up</Button>
             </>
           )}
         </NavbarItem>

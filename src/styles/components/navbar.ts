@@ -39,21 +39,6 @@ export const NavbarElements = styled('div', {
       color: '$secondary500',
     },
   },
-
-  button: {
-    cursor: 'pointer',
-    border: 0,
-    borderRadius: 32,
-    backgroundColor: '$primary500',
-    color: '$white',
-    ...utils.py('0.5rem'),
-    ...utils.px('2xl'),
-    ...utils.fs('md'),
-
-    '&:hover': {
-      backgroundColor: '$primary400',
-    },
-  },
 })
 
 export const NavbarItem = styled('div', {})

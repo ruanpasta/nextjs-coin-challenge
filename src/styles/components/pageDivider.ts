@@ -8,11 +8,6 @@ export const PageDividerContainer = styled('section', {
   position: 'relative',
   zIndex: -2,
 
-  img: {
-    height: 'auto',
-    width: 'auto'
-  },
-
   [utils.mediaBreaks.sm]: {
     marginTop: '-4rem'
   }

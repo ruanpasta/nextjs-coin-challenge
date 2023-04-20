@@ -1,6 +1,7 @@
 import { useCoinsContext } from '@/core/contexts/coinsContext'
 import { Coin } from '@/core/models/coin'
 import { TableComponent } from '@/libs'
+import Button from '@/libs/components/button'
 import {
   CryptosSectionContainer,
   CryptosSectionContent,
@@ -49,8 +50,8 @@ export default function CryptosSection() {
     )
   }
 
-  const getTrade = (coin: Coin) => (
-    <CryptosSectionContentButton>Buy</CryptosSectionContentButton>
+  const getTrade = () => (
+    <Button variant='contained' color='success' size='medium'>Buy</Button>
   )
 
   const data = coins

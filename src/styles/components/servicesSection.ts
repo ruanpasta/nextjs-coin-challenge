@@ -124,20 +124,10 @@ export const ServicesSectionSolutionsCTA = styled('div', {
   },
 
   button: {
-    cursor: 'pointer',
-    border: 0,
-    borderRadius: 32,
-    backgroundColor: '$primary500',
-    color: '$white',
     maxWidth: '11rem',
 
     marginTop: utils.sizes['3xl'],
-    ...utils.py('md'),
     ...utils.fs('lg'),
-
-    '&:hover': {
-      backgroundColor: '$primary400',
-    },
   },
 
   [utils.mediaBreaks.sm]: {

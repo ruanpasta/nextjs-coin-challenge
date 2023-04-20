@@ -48,11 +48,6 @@ export const HeroBannerCallToAction = styled('div', {
   },
 
   '& > button': {
-    cursor: 'pointer',
-    border: 0,
-    borderRadius: 32,
-    backgroundColor: '$primary500',
-    color: '$white',
     maxWidth: '278px',
 
     textTransform: 'uppercase',
@@ -60,16 +55,10 @@ export const HeroBannerCallToAction = styled('div', {
     fontWeight: 'bold',
     paddingLeft: '4.8rem',
     marginTop: utils.sizes['3xl'],
-    ...utils.py('md'),
-    ...utils.fs('lg'),
 
     display: 'flex',
     alignItems: 'center',
     gap: '0.5rem',
-
-    '&:hover': {
-      backgroundColor: '$primary400',
-    },
   },
   
   [utils.mediaBreaks.sm]: {
@@ -104,21 +93,21 @@ export const HeroBannerCTASessionButtons = styled('div', {
   gap: utils.sizes['2xl'],
   marginTop: '5rem',
 
-  '& > button': {
-    cursor: 'pointer',
-    border: 0,
-    borderRadius: 4,
-    backgroundColor: '$primary100',
-    color: '$primary500',
-
-    ...utils.py('0.5rem'),
-    ...utils.px('lg'),
-    ...utils.fs('xl'),
-
-    '&:hover': {
-      backgroundColor: '$primary200',
-    },
-  },
+  // '& > button': {
+  //   cursor: 'pointer',
+  //   border: 0,
+  //   borderRadius: 4,
+  //   backgroundColor: '$primary100',
+  //   color: '$primary500',
+  //
+  //   ...utils.py('0.5rem'),
+  //   ...utils.px('lg'),
+  //   ...utils.fs('xl'),
+  //
+  //   '&:hover': {
+  //     backgroundColor: '$primary200',
+  //   },
+  // },
 
   [utils.mediaBreaks.sm]: {
     marginTop: utils.sizes['2xl'],

@@ -71,18 +71,6 @@ export const EmailSubscribeSubscribeForm = styled('div', {
   },
 
   button: {
-    cursor: 'pointer',
-    border: 0,
-    borderRadius: 32,
-    backgroundColor: '$primary500',
-    color: '$white',
-
     marginTop: utils.sizes['3xl'],
-    ...utils.py('sm'),
-    ...utils.fs('lg'),
-
-    '&:hover': {
-      backgroundColor: '$primary400',
-    },
   },
 })

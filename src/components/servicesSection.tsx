@@ -17,6 +17,7 @@ import solutionFour from '../assets/solution-4.png'
 import solutionFive from '../assets/solution-5.png'
 
 import { useKeenSlider } from 'keen-slider/react'
+import Button from '@/libs/components/button'
 
 const solutions = [
   {
@@ -130,7 +131,7 @@ export default function ServicesSection() {
             purus sit amet luctus venenatis, lectus magna fringilla urna,
             porttitor
           </p>
-          <button>Sign up now</button>
+          <Button variant='contained' size='medium'>Sign up now</Button>
         </ServicesSectionSolutionsCTA>
       </ServicesSectionContent>
     </ServicesSectionContainer>

@@ -1,4 +1,5 @@
-import Button from '@/libs/components/button'
+import { ButtonComponent } from '@/libs/components'
+
 import {
   EmailSubscribeContainer,
   EmailSubscribeContent,
@@ -26,7 +27,7 @@ export default function EmailSubscribe() {
           <EmailSubscribeSubscribeForm>
             <label>Email</label>
             <input placeholder='Email' />
-            <Button variant='contained' size='large'>Subscribe</Button>
+            <ButtonComponent variant='contained' size='large'>Subscribe</ButtonComponent>
           </EmailSubscribeSubscribeForm>
         </EmailSubscribeSpacer>
       </EmailSubscribeContent>

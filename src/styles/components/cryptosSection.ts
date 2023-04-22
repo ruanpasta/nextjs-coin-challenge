@@ -40,31 +40,3 @@ export const CryptosSectionContentNegativeChange = styled('span', {
   color: '$quartenary700'
 })
 
-export const CryptosSectionContentButton = styled('button', {
-  cursor: 'pointer',
-  border: 0,
-  borderRadius: 32,
-  backgroundColor: '$tertiary700',
-  color: '$white',
-
-  ...utils.px('1.5rem'),
-  ...utils.py('0.5rem'),
-
-  '&:hover': {
-    backgroundColor: '$tertiary600',
-  },
-
-  [utils.mediaBreaks.sm]: {
-    cursor: 'pointer',
-    border: 0,
-    backgroundColor: 'transparent',
-    width: 'fit-content',
-
-    color: '$primary500',
-    ...utils.fs('lg'),
-
-    '&:hover': {
-      color: '$primary300',
-    },
-  },
-})

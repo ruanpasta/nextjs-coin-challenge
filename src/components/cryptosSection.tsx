@@ -1,11 +1,10 @@
 import { useCoinsContext } from '@/core/contexts/coinsContext'
 import { Coin } from '@/core/models/coin'
 import { TableComponent } from '@/libs'
-import Button from '@/libs/components/button'
+import { ButtonComponent } from '@/libs/components'
 import {
   CryptosSectionContainer,
   CryptosSectionContent,
-  CryptosSectionContentButton,
   CryptosSectionContentLabel,
   CryptosSectionContentNegativeChange,
   CryptosSectionContentPositiveChange,
@@ -51,7 +50,7 @@ export default function CryptosSection() {
   }
 
   const getTrade = () => (
-    <Button variant='contained' color='success' size='medium'>Buy</Button>
+    <ButtonComponent variant='contained' color='success' size='medium'>Buy</ButtonComponent>
   )
 
   const data = coins
@@ -61,7 +60,7 @@ export default function CryptosSection() {
       crypto: getCrypto(coin),
       price: getCoinPrice(coin),
       change: getChange(coin),
-      trade: getTrade(coin),
+      trade: getTrade(),
     }))
 
   return (

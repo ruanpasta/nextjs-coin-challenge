@@ -5,6 +5,8 @@ import CryptosSection from "./cryptosSection"
 import EmailSubscribe from "./emailSubscribe"
 import Credits from "./credits"
 import PageDivider from "./pageDivider"
+import SignInModal from "./signInModal"
+import SignUpModal from "./signUpModal"
 
 export {
   Navbar,
@@ -13,5 +15,7 @@ export {
   CryptosSection,
   EmailSubscribe,
   Credits,
-  PageDivider
+  PageDivider,
+  SignInModal,
+  SignUpModal
 }

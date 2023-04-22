@@ -1,26 +1,53 @@
+import { useState } from 'react'
+
 import { ButtonComponent, TextInputComponent } from '@/libs/components'
+
 import {
+  SignUpModalCoin,
   SignUpModalContainer,
   SignUpModalFooter,
   SignUpModalHeader,
   SignUpModalMain,
+  SignUpModalSynch,
 } from '@/styles/components/signUpModal'
+
 import {
+  AiOutlineClose,
   AiOutlineEye,
+  AiOutlineEyeInvisible,
   AiOutlineLock,
   AiOutlineMail,
   AiOutlineUser,
 } from 'react-icons/ai'
 
 export default function SignUpModal() {
+  const [passwordType, setPasswordType] = useState('password')
+  const [confirmPasswordType, setConfirmPasswordType] = useState('password')
+
+  const handlePasswordVisible = (
+    $event: Event,
+    inputType: any,
+    setInputType: (t: string) => void
+  ) => {
+    $event.preventDefault()
+
+    setInputType(inputType === 'text' ? 'password' : 'text')
+  }
+
   return (
     <SignUpModalContainer>
       <SignUpModalHeader>
-        <h4>Sign in to CoinSynch</h4>
+        <span>
+          Sign up to{' '}
+          <SignUpModalCoin>
+            Coin<SignUpModalSynch>Synch</SignUpModalSynch>
+          </SignUpModalCoin>
+        </span>
         <ButtonComponent variant='link' color='secondary'>
-          X
+          <AiOutlineClose size={16} />
         </ButtonComponent>
       </SignUpModalHeader>
+
       <SignUpModalMain>
         <form>
           <TextInputComponent
@@ -32,14 +59,52 @@ export default function SignUpModal() {
             iconStart={<AiOutlineMail size={16} />}
           />
           <TextInputComponent
+            type={passwordType}
             placeholder='Password'
             iconStart={<AiOutlineLock size={16} />}
-            iconEnd={<AiOutlineEye />}
+            iconEnd={
+              <ButtonComponent
+                variant='link'
+                color='secondary'
+                onClick={($event: any) =>
+                  handlePasswordVisible(
+                    $event,
+                    passwordType,
+                    setPasswordType
+                  )
+                }
+              >
+                {passwordType === 'password' ? (
+                  <AiOutlineEye size={16} />
+                ) : (
+                  <AiOutlineEyeInvisible size={16} />
+                )}
+              </ButtonComponent>
+            }
           />
           <TextInputComponent
+            type={confirmPasswordType}
             placeholder='Confirm password'
             iconStart={<AiOutlineLock size={16} />}
-            iconEnd={<AiOutlineEye />}
+            iconEnd={
+              <ButtonComponent
+                variant='link'
+                color='secondary'
+                onClick={($event: any) =>
+                  handlePasswordVisible(
+                    $event,
+                    confirmPasswordType,
+                    setConfirmPasswordType
+                  )
+                }
+              >
+                {confirmPasswordType === 'password' ? (
+                  <AiOutlineEye size={16} />
+                ) : (
+                  <AiOutlineEyeInvisible size={16} />
+                )}
+              </ButtonComponent>
+            }
           />
 
           <div>
@@ -50,14 +115,19 @@ export default function SignUpModal() {
             </label>
           </div>
 
-
           <ButtonComponent variant='contained' size='large'>
             Sign in
           </ButtonComponent>
         </form>
       </SignUpModalMain>
+
       <SignUpModalFooter>
-        <span>Sign up to CoinSynch</span>
+        <span>
+          Sign up to{' '}
+          <SignUpModalCoin>
+            Coin<SignUpModalSynch>Synch</SignUpModalSynch>
+          </SignUpModalCoin>
+        </span>
       </SignUpModalFooter>
     </SignUpModalContainer>
   )

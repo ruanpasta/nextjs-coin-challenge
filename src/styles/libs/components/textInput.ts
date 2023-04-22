@@ -31,4 +31,8 @@ export const TextInputElement = styled('input', {
 
 export const TextInputIconWrapper = styled('div', {
   color: '$secondary300',
+
+  button: {
+    padding: 0
+  }
 })

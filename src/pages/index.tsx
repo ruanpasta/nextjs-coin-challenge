@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetServerSideProps, GetStaticProps } from 'next'
 
 import axios from 'axios'
 
@@ -17,24 +17,8 @@ import {
 import { HomeContainer } from '@/styles/pages/home'
 
 import { Coin } from '@/core/models/coin'
-import { useEffect, useState } from 'react'
 
-export default function Home() {
-  const [coins, setCoins] = useState<Coin[]>([])
-
-  async function getCoins() {
-    try {
-      const coinsResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/coins`)
-      setCoins(coinsResponse.data)
-    } catch (error) {
-      throw new Error('Failed to load coins')
-    }
-  }
-
-  useEffect(() => {
-    getCoins()
-  }, [])
-
+export default function Home({ coins }: { coins: Coin[] }) {
   return (
     <HomeContainer>
       <CoinsContext.Provider value={{ coins }}>
@@ -53,11 +37,22 @@ export default function Home() {
   )
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const twoHours = 60 * 60 * 2
+async function getCoins() {
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/coins`
+    )
+    const coins = await response.json()
+    return coins 
+  } catch (error) {
+    throw new Error('Failed to load coins')
+  }
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const coins = (await getCoins()) || {}
 
   return {
-    props: {},
-    revalidate: twoHours
+    props: { coins },
   }
 }

@@ -39,10 +39,7 @@ export default function HeroBanner() {
 
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false)
 
-  const handloOpenSignUpModal = () => {
-    console.log('OPEN MODAL')
-    setIsSignUpModalOpen(true)
-  }
+  const handloOpenSignUpModal = () => setIsSignUpModalOpen(true)
 
   const closeModal = () => setIsSignUpModalOpen(false)
 

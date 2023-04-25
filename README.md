@@ -2,7 +2,7 @@
 
 This project was developed to meet a challenge. It's a Cryptos project with real data on a specific date. In the future, it can be improved to have real-time data.
 
-I'm using SSG in it, although SSR and even SPA could be used in some cases, since the data is static through the API available at */api/coins*, I'm only using SSG.
+I'm using SSR in it, although SSG and even SPA could be used in some cases, since the data is static through the API available at */api/coins*, I'm only using SSR.
 
 You can access the system in production through the link [Coin APP](https://coin-app.ruanpasta.com/).
 

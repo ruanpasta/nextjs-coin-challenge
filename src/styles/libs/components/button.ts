@@ -1,34 +1,6 @@
 import { styled } from '@/styles'
 import { utils } from '@/styles/utils'
 
-const getVariantDefaultColors = () => ({
-  '&$color-rimary': {
-    color: '$white',
-    '&:hover': { backgroundColor: 'rgba($primary400, 0.4)' },
-  },
-  '&$color-secondary': {
-    color: '$primary500',
-    '&:hover': { backgroundColor: '$primary200' },
-  },
-  '&$color-success': {},
-})
-
-const getVariantContainedColors = () => ({
-  '&$color-rimary': {
-    color: '$white',
-    backgroundColor: '$primary500',
-    '&:hover': { backgroundColor: '$primary400' },
-  },
-  '&$color-secondary': {
-    color: '$primary500',
-    backgroundColor: '$primary100',
-    '&:hover': { backgroundColor: '$primary200' },
-  },
-  '&$color-success': {
-    color: '$primary500',
-  },
-})
-
 export const ButtonContainer = styled('button', {
   cursor: 'pointer',
   border: 0,

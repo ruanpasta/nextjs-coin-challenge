@@ -6,9 +6,7 @@ import exchanges from '@/data/exchangesrates.json'
 
 import { Coin, CoinChangeDTO, CoinDTO, CoinIconDTO } from '@/core/models/coin'
 import ErrorMesage from '@/core/models/error'
-
-const timer = (time: number) =>
-  new Promise((resolve) => setTimeout(resolve, time))
+import { timer } from '@/helpers'
 
 /*
   Simula uma requisicao HTTP para buscar as Coins

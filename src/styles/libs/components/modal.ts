@@ -23,7 +23,7 @@ export const ModalContainer = styled('div', {
 
 export const ModalWrapper = styled('div', {
   backgroundColor: 'white',
-  borderRadius: '4px',
+  borderRadius: '8px',
   boxShadow: '0 3px 10px rgba(0, 0, 0, 0.3)',
   maxWidth: '600px',
   padding: '20px',

@@ -3,7 +3,6 @@ import { utils } from '../utils'
 
 export const SignUpModalContainer = styled('div', {
   maxWidth: 272,
-
 })
 
 export const SignUpModalHeader = styled('div', {
@@ -33,12 +32,27 @@ export const SignUpModalMain = styled('div', {
   },
 })
 
-export const SignUpModalFooter = styled('div', {})
+export const SignUpModalMainCheckbox = styled('div', {
+  '& > label': {
+    userSelect: 'none'
+  }
+})
+
+export const SignUpModalFooter = styled('div', {
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+
+  fontWeight: 'bold',
+
+  ...utils.fs('md')
+})
 
 export const SignUpModalCoin = styled('span', {
   color: '$primary500',
   fontWeight: 'bold'
 })
+
 export const SignUpModalSynch = styled('span', {
   color: '$secondary500',
   fontWeight: 'bold'

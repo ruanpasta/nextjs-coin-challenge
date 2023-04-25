@@ -125,8 +125,8 @@ export default function Navbar() {
         isOpen={isSignInModalOpen || isSignUpModalOpen}
         onClose={closeModal}
       >
-        {isSignInModalOpen && <SignInModal />}
-        {isSignUpModalOpen && <SignUpModal />}
+        {isSignInModalOpen && <SignInModal closeModal={closeModal} />}
+        {isSignUpModalOpen && <SignUpModal closeModal={closeModal} />}
       </ModalComponent>
     </NavbarContainer>
   )

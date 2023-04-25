@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 import Image from 'next/image'
 
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 
-import { ButtonComponent } from '@/libs/components'
+import { ButtonComponent, ModalComponent } from '@/libs/components'
 
 import {
   HeroBannerCTASessionButtons,
@@ -20,6 +20,8 @@ import { AiOutlineArrowRight } from 'react-icons/ai'
 import carouselOne from '../assets/carousel-1.png'
 import carouselTwo from '../assets/carousel-2.png'
 import carouselThree from '../assets/carousel-3.png'
+import SignUpModal from './signUpModal'
+import { Tooltip } from 'react-tooltip'
 
 const carouselImages = [
   { id: 1, src: carouselOne },
@@ -35,6 +37,15 @@ export default function HeroBanner() {
     },
   })
 
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false)
+
+  const handloOpenSignUpModal = () => {
+    console.log('OPEN MODAL')
+    setIsSignUpModalOpen(true)
+  }
+
+  const closeModal = () => setIsSignUpModalOpen(false)
+
   useEffect(() => {
     const handleScroll = (e: Event) => {
       // Verifica se o evento de scroll foi acionado pelo scroll vertical
@@ -49,40 +60,77 @@ export default function HeroBanner() {
   }, [sliderContainerRef, sliderInstance])
 
   return (
-    <HeroBannerContainer>
-      <HeroBannerContent>
-        <HeroBannerCallToAction>
-          <h1>Lorem ipsum dolor sit amet, consectetur</h1>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam,
-            purus sit amet luctus venenatis, lectus magna fringilla urna,
-            porttitor
-          </p>
-          <ButtonComponent variant='contained' size='large'>
-            Sign Up Now
-            <AiOutlineArrowRight />
-          </ButtonComponent>
+    <>
+      <HeroBannerContainer>
+        <HeroBannerContent>
+          <HeroBannerCallToAction>
+            <h1>Lorem ipsum dolor sit amet, consectetur</h1>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit ut
+              aliquam, purus sit amet luctus venenatis, lectus magna fringilla
+              urna, porttitor
+            </p>
+            <ButtonComponent
+              variant='contained'
+              size='large'
+              onClick={handloOpenSignUpModal}
+            >
+              Sign Up Now
+              <AiOutlineArrowRight />
+            </ButtonComponent>
 
-          <HeroBannerCTASessionButtons>
-            <ButtonComponent variant='contained' color='secondary' format='square' size='large'>Cryptos</ButtonComponent>
-            <ButtonComponent variant='contained' color='secondary' format='square' size='large'>NFTs</ButtonComponent>
-            <ButtonComponent variant='contained' color='secondary' format='square' size='large'>Games</ButtonComponent>
-          </HeroBannerCTASessionButtons>
-        </HeroBannerCallToAction>
+            <HeroBannerCTASessionButtons>
+              <ButtonComponent
+                variant='contained'
+                color='secondary'
+                format='square'
+                size='large'
+                data-tooltip-id='not-implemented'
+              >
+                Cryptos
+              </ButtonComponent>
+              <ButtonComponent
+                variant='contained'
+                color='secondary'
+                format='square'
+                size='large'
+                data-tooltip-id='not-implemented'
+              >
+                NFTs
+              </ButtonComponent>
+              <ButtonComponent
+                variant='contained'
+                color='secondary'
+                format='square'
+                size='large'
+                data-tooltip-id='not-implemented'
+              >
+                Games
+              </ButtonComponent>
+            </HeroBannerCTASessionButtons>
+          </HeroBannerCallToAction>
 
-        <HeroBannerIllustrations ref={sliderContainerRef} className='keen-slider'>
-          {carouselImages.map((image) => (
-            <Image
-              key={image.id}
-              className='keen-slider__slide'
-              src={image.src}
-              width={464}
-              height={499}
-              alt='Carousel Image'
-            />
-          ))}
-        </HeroBannerIllustrations>
-      </HeroBannerContent>
-    </HeroBannerContainer>
+          <HeroBannerIllustrations
+            ref={sliderContainerRef}
+            className='keen-slider'
+          >
+            {carouselImages.map((image) => (
+              <Image
+                key={image.id}
+                className='keen-slider__slide'
+                src={image.src}
+                width={464}
+                height={499}
+                alt='Carousel Image'
+              />
+            ))}
+          </HeroBannerIllustrations>
+        </HeroBannerContent>
+      </HeroBannerContainer>
+      <ModalComponent isOpen={isSignUpModalOpen} onClose={closeModal}>
+        <SignUpModal closeModal={closeModal} />
+      </ModalComponent>
+      <Tooltip id='not-implemented'>Not implemented</Tooltip>
+    </>
   )
 }

@@ -6,7 +6,7 @@ import exchanges from '@/data/exchangesrates.json'
 
 import { Coin, CoinChangeDTO, CoinDTO, CoinIconDTO } from '@/core/models/coin'
 import ErrorMesage from '@/core/models/error'
-import { cors, timer } from '@/helpers'
+import { timer } from '@/helpers'
 
 /*
   Simula uma requisicao HTTP para buscar as Coins
@@ -98,9 +98,7 @@ export default async function handler(
   _: NextApiRequest,
   res: NextApiResponse<Coin[] | ErrorMesage>
 ) {
-  // cors(_, res, async () => {
-    const response = await getCoinsData()
-    if (Array.isArray(response)) return res.status(200).json(response)
-    return res.status(500).json(response)
-  // })
+  const response = await getCoinsData()
+  if (Array.isArray(response)) return res.status(200).json(response)
+  return res.status(500).json(response)
 }

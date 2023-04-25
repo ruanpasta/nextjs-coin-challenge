@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { Tooltip } from 'react-tooltip'
+
 import { ButtonComponent, ModalComponent } from '@/libs/components'
 
 import { useCoinsContext } from '@/core/contexts/coinsContext'
@@ -28,10 +30,10 @@ import SignUpModal from './signUpModal'
 
 export default function Navbar() {
   const size = useWindowSize()
-  const [isMobile, setIsMobile] = useState<boolean>(false)
-  const [isDesktop, setIsDesktop] = useState<boolean>(true)
-  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState<boolean>(false)
-  const [isSignInModalOpen, setIsSignInModalOpen] = useState<boolean>(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(true)
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false)
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState(false)
 
   useEffect(() => {
     setIsMobile(size.width < 321)
@@ -80,8 +82,12 @@ export default function Navbar() {
           <Image src={logo.src} width={124} height={21} alt='logo' />
 
           <PagesMenus>
-            <Link href='/'>About</Link>
-            <Link href='/'>Top Cryptos</Link>
+            <Link href='/' data-tooltip-id='not-implemented'>
+              About
+            </Link>
+            <Link href='/' data-tooltip-id='not-implemented'>
+              Top Cryptos
+            </Link>
           </PagesMenus>
         </NavbarItem>
         <NavbarItem>
@@ -128,6 +134,7 @@ export default function Navbar() {
         {isSignInModalOpen && <SignInModal closeModal={closeModal} />}
         {isSignUpModalOpen && <SignUpModal closeModal={closeModal} />}
       </ModalComponent>
+      <Tooltip id='not-implemented'>Not implemented</Tooltip>
     </NavbarContainer>
   )
 }

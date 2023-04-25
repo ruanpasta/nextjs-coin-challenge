@@ -10,6 +10,7 @@ import {
   CryptosSectionContentPositiveChange,
 } from '@/styles/components/cryptosSection'
 import Image from 'next/image'
+import { Tooltip } from 'react-tooltip'
 
 const expandedColumns = ['price', 'change']
 
@@ -50,7 +51,14 @@ export default function CryptosSection() {
   }
 
   const getTrade = () => (
-    <ButtonComponent variant='contained' color='success' size='medium'>Buy</ButtonComponent>
+    <ButtonComponent
+      variant='contained'
+      color='success'
+      size='medium'
+      data-tooltip-id='not-implemented'
+    >
+      Buy
+    </ButtonComponent>
   )
 
   const data = coins
@@ -75,6 +83,7 @@ export default function CryptosSection() {
           rows={5}
         />
       </CryptosSectionContent>
+      <Tooltip id='not-implemented'>Not implemented</Tooltip>
     </CryptosSectionContainer>
   )
 }

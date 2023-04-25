@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { ButtonComponent } from '@/libs/components'
+import { ButtonComponent, ModalComponent } from '@/libs/components'
 
 import {
   ServicesSectionContent,
@@ -19,6 +19,8 @@ import solutionFour from '../assets/solution-4.png'
 import solutionFive from '../assets/solution-5.png'
 
 import { useKeenSlider } from 'keen-slider/react'
+import SignUpModal from './signUpModal'
+import { useState } from 'react'
 
 const solutions = [
   {
@@ -84,6 +86,12 @@ export default function ServicesSection() {
     loop: false,
   })
 
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false)
+
+  const handloOpenSignUpModal = () => setIsSignUpModalOpen(true)
+
+  const closeModal = () => setIsSignUpModalOpen(false)
+
   return (
     <ServicesSectionContainer>
       <ServicesSectionContent>
@@ -132,9 +140,18 @@ export default function ServicesSection() {
             purus sit amet luctus venenatis, lectus magna fringilla urna,
             porttitor
           </p>
-          <ButtonComponent variant='contained' size='medium'>Sign up now</ButtonComponent>
+          <ButtonComponent
+            variant='contained'
+            size='medium'
+            onClick={handloOpenSignUpModal}
+          >
+            Sign up now
+          </ButtonComponent>
         </ServicesSectionSolutionsCTA>
       </ServicesSectionContent>
+      <ModalComponent isOpen={isSignUpModalOpen} onClose={closeModal}>
+        <SignUpModal closeModal={closeModal} />
+      </ModalComponent>
     </ServicesSectionContainer>
   )
 }

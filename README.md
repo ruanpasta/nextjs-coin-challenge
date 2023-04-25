@@ -29,3 +29,11 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 API routes can be accessed on [http://localhost:3000/api/coins](http://localhost:3000/api/coins). This endpoint can be edited in `pages/api/coins.ts`.
+
+### 🚀 WORK IN PROGRESS 🚀
+This project is a work in progress, there are still some things left to finish, such as:
+
+- The Dashboard page
+- Unit tests
+- End-to-end tests
+- etc...

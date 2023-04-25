@@ -98,9 +98,9 @@ export default async function handler(
   _: NextApiRequest,
   res: NextApiResponse<Coin[] | ErrorMesage>
 ) {
-  cors(_, res, async () => {
+  // cors(_, res, async () => {
     const response = await getCoinsData()
     if (Array.isArray(response)) return res.status(200).json(response)
     return res.status(500).json(response)
-  })
+  // })
 }

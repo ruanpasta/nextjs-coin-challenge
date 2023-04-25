@@ -24,7 +24,7 @@ export default function Home() {
 
   async function getCoins() {
     try {
-      const coinsResponse = await axios.post('http://localhost:3000/api/coins')
+      const coinsResponse = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/coins`)
       setCoins(coinsResponse.data)
     } catch (error) {
       throw new Error('Failed to load coins')

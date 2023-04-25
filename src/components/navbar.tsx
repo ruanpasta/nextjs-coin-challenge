@@ -101,7 +101,11 @@ export default function Navbar() {
             </CryptoSlider>
           )}
           {isMobile ? (
-            <ButtonComponent color='secondary' size='medium'>
+            <ButtonComponent
+              data-tooltip-id='not-implemented'
+              color='secondary'
+              size='medium'
+            >
               <AiOutlineMenu />
             </ButtonComponent>
           ) : (

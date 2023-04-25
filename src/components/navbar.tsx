@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import { ButtonComponent, ModalComponent } from '@/libs/components'
+
 import { useCoinsContext } from '@/core/contexts/coinsContext'
 import { Coin } from '@/core/models/coin'
 
@@ -21,12 +23,15 @@ import {
 import { AiOutlineMenu } from 'react-icons/ai'
 
 import logo from '../assets/logo.png'
-import Button from '@/libs/components/button'
+import SignInModal from './signInModal'
+import SignUpModal from './signUpModal'
 
 export default function Navbar() {
   const size = useWindowSize()
   const [isMobile, setIsMobile] = useState<boolean>(false)
   const [isDesktop, setIsDesktop] = useState<boolean>(true)
+  const [isSignUpModalOpen, setIsSignUpModalOpen] = useState<boolean>(false)
+  const [isSignInModalOpen, setIsSignInModalOpen] = useState<boolean>(false)
 
   useEffect(() => {
     setIsMobile(size.width < 321)
@@ -60,6 +65,14 @@ export default function Navbar() {
     )
   }
 
+  const openSignUpModal = () => setIsSignUpModalOpen(true)
+
+  const openSignInModal = () => setIsSignInModalOpen(true)
+
+  const closeModal = () => (
+    setIsSignUpModalOpen(false), setIsSignInModalOpen(false)
+  )
+
   return (
     <NavbarContainer>
       <NavbarElements>
@@ -77,16 +90,26 @@ export default function Navbar() {
               <CryptoContent>
                 {coins
                   .sort((a, b) => b.volumeLastMonth - a.volumeLastMonth)
-                  .map((coin) => (getCoinInfo(coin)))}
+                  .map((coin) => getCoinInfo(coin))}
               </CryptoContent>
             </CryptoSlider>
           )}
           {isMobile ? (
-            <AiOutlineMenu />
+            <ButtonComponent color='secondary' size='medium'>
+              <AiOutlineMenu />
+            </ButtonComponent>
           ) : (
             <>
-              <Button color='secondary'>Sign in</Button>
-              <Button variant='contained' size='medium'>Sign up</Button>
+              <ButtonComponent color='secondary' onClick={openSignInModal}>
+                Sign in
+              </ButtonComponent>
+              <ButtonComponent
+                variant='contained'
+                size='medium'
+                onClick={openSignUpModal}
+              >
+                Sign up
+              </ButtonComponent>
             </>
           )}
         </NavbarItem>
@@ -98,6 +121,13 @@ export default function Navbar() {
           </CryptoContent>
         </CryptoSlider>
       )}
+      <ModalComponent
+        isOpen={isSignInModalOpen || isSignUpModalOpen}
+        onClose={closeModal}
+      >
+        {isSignInModalOpen && <SignInModal closeModal={closeModal} />}
+        {isSignUpModalOpen && <SignUpModal closeModal={closeModal} />}
+      </ModalComponent>
     </NavbarContainer>
   )
 }

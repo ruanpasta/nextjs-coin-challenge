@@ -1,10 +1,12 @@
 import { ButtonContainer } from '@/styles/libs/components/button'
+import LoadingSpinner from './loadingSpinner'
 
 interface ButtonProps {
-  color?: 'primary' | 'secondary' | 'success' 
+  color?: 'primary' | 'secondary' | 'success'
   size?: 'small' | 'medium' | 'large' | 'extraLarge'
   format?: 'rounded' | 'square'
   variant?: 'link' | 'contained'
+  isLoading?: boolean
 
   children: React.ReactNode
 
@@ -13,7 +15,8 @@ interface ButtonProps {
 }
 
 export default function Button(props: ButtonProps) {
-  const { color, size, format, variant, children, ...rest } = props
+  const { color, size, format, variant, isLoading, children, ...rest } = props
+
   return (
     <ButtonContainer
       color={color}
@@ -22,7 +25,7 @@ export default function Button(props: ButtonProps) {
       variant={variant}
       {...rest}
     >
-      {children}
+      {isLoading ? <LoadingSpinner /> : children}
     </ButtonContainer>
   )
 }

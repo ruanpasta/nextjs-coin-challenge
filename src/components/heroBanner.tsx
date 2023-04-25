@@ -5,6 +5,8 @@ import Image from 'next/image'
 import { useKeenSlider } from 'keen-slider/react'
 import 'keen-slider/keen-slider.min.css'
 
+import { ButtonComponent } from '@/libs/components'
+
 import {
   HeroBannerCTASessionButtons,
   HeroBannerCallToAction,
@@ -18,7 +20,6 @@ import { AiOutlineArrowRight } from 'react-icons/ai'
 import carouselOne from '../assets/carousel-1.png'
 import carouselTwo from '../assets/carousel-2.png'
 import carouselThree from '../assets/carousel-3.png'
-import Button from '@/libs/components/button'
 
 const carouselImages = [
   { id: 1, src: carouselOne },
@@ -57,15 +58,15 @@ export default function HeroBanner() {
             purus sit amet luctus venenatis, lectus magna fringilla urna,
             porttitor
           </p>
-          <Button variant='contained' size='large'>
+          <ButtonComponent variant='contained' size='large'>
             Sign Up Now
             <AiOutlineArrowRight />
-          </Button>
+          </ButtonComponent>
 
           <HeroBannerCTASessionButtons>
-            <Button variant='contained' color='secondary' format='square' size='large'>Cryptos</Button>
-            <Button variant='contained' color='secondary' format='square' size='large'>NFTs</Button>
-            <Button variant='contained' color='secondary' format='square' size='large'>Games</Button>
+            <ButtonComponent variant='contained' color='secondary' format='square' size='large'>Cryptos</ButtonComponent>
+            <ButtonComponent variant='contained' color='secondary' format='square' size='large'>NFTs</ButtonComponent>
+            <ButtonComponent variant='contained' color='secondary' format='square' size='large'>Games</ButtonComponent>
           </HeroBannerCTASessionButtons>
         </HeroBannerCallToAction>
 

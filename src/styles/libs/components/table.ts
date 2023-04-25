@@ -80,6 +80,7 @@ export const TableBodyRow = styled('tr', {
   },
 
   '& > .table-body-row--arrow': {
+    cursor: 'pointer',
     color: '$primary500',
     textAlign: 'right',
     ...utils.fs('lg')

@@ -14,7 +14,7 @@ import { timer } from '@/helpers'
   https://rest.coinapi.io/v1/assets?filter_asset_id=BTC,ETH,USDT,BNB,USDC,XRP,ADA,DOGE,MATIC,SOL
 */
 const getCoins = async () => {
-  await timer(500)
+  await timer(10)
   return coins
 }
 
@@ -29,7 +29,7 @@ const getCoins = async () => {
   que eh usado para buscar a url da moeda
 */
 const getCoinsIcons = async () => {
-  await timer(250)
+  await timer(10)
   return coinsIcons
 }
 
@@ -41,7 +41,7 @@ const getCoinsIcons = async () => {
   Porem teriam que ser feitas varias requests
 */
 const getCoinsChange = async () => {
-  await timer(250)
+  await timer(10)
   return exchanges
 }
 

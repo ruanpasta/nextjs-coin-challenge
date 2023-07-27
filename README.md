@@ -13,6 +13,8 @@ https://nextjs-coin-challenge.ruanpasta.com/
 
 [Nextjs](https://nextjs.org/) version 13.3.0.
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/a022ee9f-d923-43a4-9fe7-01b76f2b1b9e/deploy-status)](https://app.netlify.com/sites/friendly-sfogliatella-aee155/deploys)
+
 ## Getting Started
 
 - Install dependencies:

@@ -37,7 +37,7 @@ export default function TableComponent({
 
   const isShowingAllRows = values.length === data.length
   const size = useWindowSize()
-  const isMobile = size.width < 321
+  const isMobile = size.width < 480
 
   useEffect(() => {
     const nextData = values.slice(0, rows)

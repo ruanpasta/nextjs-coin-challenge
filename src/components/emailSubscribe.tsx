@@ -19,10 +19,12 @@ export default function EmailSubscribe() {
     setEmail(value?.target?.value)
 
   const handleSubscribe = async () => {
-    // Simulating subscribe
-    setIsLoanding(true)
-    await timer(800).finally(() => setIsLoanding(false))
-    setEmail('')
+    if (email) {
+      // Simulating subscribe
+      setIsLoanding(true)
+      await timer(800).finally(() => setIsLoanding(false))
+      setEmail('')
+    }
   }
 
   return (

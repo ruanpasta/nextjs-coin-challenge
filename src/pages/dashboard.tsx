@@ -13,6 +13,7 @@ export default function Dashboard() {
         </DashboardNavbar>
       </header>
       <h1>Dashboard Work in progress</h1>
+      <p>(Development stopped)</p>
     </DashboardContainer>
   )
 }

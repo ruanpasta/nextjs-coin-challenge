@@ -1,3 +1,4 @@
+import { wrap } from 'module'
 import { styled } from '..'
 import { utils } from '../utils'
 
@@ -92,22 +93,7 @@ export const HeroBannerCTASessionButtons = styled('div', {
   alignItems: 'center',
   gap: utils.sizes['2xl'],
   marginTop: '5rem',
-
-  // '& > button': {
-  //   cursor: 'pointer',
-  //   border: 0,
-  //   borderRadius: 4,
-  //   backgroundColor: '$primary100',
-  //   color: '$primary500',
-  //
-  //   ...utils.py('0.5rem'),
-  //   ...utils.px('lg'),
-  //   ...utils.fs('xl'),
-  //
-  //   '&:hover': {
-  //     backgroundColor: '$primary200',
-  //   },
-  // },
+  flexWrap: 'wrap',
 
   [utils.mediaBreaks.sm]: {
     marginTop: utils.sizes['2xl'],

@@ -8,7 +8,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: 'https://coin-api.ruanpasta.com/api/:path*',
+        destination: 'https://nextjs-coin-challenge.ruanpasta.com/api/:path*',
       },
     ]
   },
